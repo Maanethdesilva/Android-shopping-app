@@ -27,7 +27,7 @@ public class NotificationPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.notification_page);
 
         Button button = findViewById(R.id.button);
         ListView list = findViewById(R.id.notifications_list);

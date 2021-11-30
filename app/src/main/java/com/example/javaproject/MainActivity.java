@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView signup;
+    private TextView signup, loginbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         signup = (TextView) findViewById(R.id.singupbtn);
         signup.setOnClickListener(this);
+        loginbutton = (TextView) findViewById(R.id.loginbutton);
+        loginbutton.setOnClickListener(this);
     }
 
     @Override
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.singupbtn:
                 startActivity(new Intent(this, signupOptions.class));
+                break;
+            case R.id.loginbutton:
+                startActivity(new Intent(this, CustomerActivity.class));
                 break;
         }
     }
