@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class User extends AppCompatActivity {
     private EditText eTextName, eTextEmail, eTextPassword;
+    //initialize firebase authentication variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,8 @@ public class User extends AppCompatActivity {
         String email = eTextEmail.getText().toString();
         String password = eTextPassword.getText().toString();
 
-        //validation of this information in progress by Mohammed
+        //validation of this information
 
-        //firebase stuff in progress by Maaneth
         //create new user with firebase
         //check if user registered
         //if user registered create a new instance of customer or store owner

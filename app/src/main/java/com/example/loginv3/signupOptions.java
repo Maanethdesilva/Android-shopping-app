@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class signupOptions extends AppCompatActivity implements View.OnClickListener {
-
     private TextView signupCustomer;
     private TextView signupStoreOwner;
 
@@ -26,13 +25,11 @@ public class signupOptions extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.storeownerbtn:
-                startActivity(new Intent(this, Registration2.class));
-                break;
-            case R.id.customerbtn:
-                startActivity(new Intent(this, Registration.class));
-                break;
+        if (v.getId() == R.id.storeownerbtn){
+            startActivity(new Intent(this, Registration2.class));
+        }
+        if (v.getId() == R.id.customerbtn){
+            startActivity(new Intent(this, Registration.class));
         }
     }
 }

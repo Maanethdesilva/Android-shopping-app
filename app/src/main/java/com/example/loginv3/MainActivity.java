@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private TextView signup;
 
     @Override
@@ -21,10 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.singupbtn:
-                startActivity(new Intent(this, signupOptions.class));
-                break;
+        if (v.getId() == R.id.singupbtn){
+            startActivity(new Intent(this, signupOptions.class));
         }
     }
 }

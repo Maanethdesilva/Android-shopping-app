@@ -10,27 +10,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Registration extends AppCompatActivity implements View.OnClickListener {
-
-//    private EditText name, email, password;
     private TextView register;
-
     //initialize firebase authentication
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_v1);
-
         register = (Button) findViewById(R.id.registerbutton);
         register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.registerbutton:
-                startActivity(new Intent(this, User.class));
+        if (v.getId() == R.id.registerbutton){
+            startActivity(new Intent(this, User.class));
         }
     }
 }
