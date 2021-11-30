@@ -19,12 +19,88 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
-            android:id="@+id/textStorestoView"
+            android:id="@+id/textStoresView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Stores"
+            android:textColor="#000000"
+            android:text="STORES"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textSize="26sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Store:"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvStoreName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Magen's Walmart"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product:"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Potatoes"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price:"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="$15"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -98,9 +174,11 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Customer Home Page"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:text="CUSTOMER HOME"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textSize="26sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
