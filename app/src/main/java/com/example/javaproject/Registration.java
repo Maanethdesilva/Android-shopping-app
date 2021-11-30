@@ -40,6 +40,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 String name = ((EditText) findViewById(R.id.editTextName)).getText().toString().trim();
                 String email = ((EditText) findViewById(R.id.editTextEmailAddressReg)).getText().toString();
                 String password = ((EditText) findViewById(R.id.editTextPasswordReg)).getText().toString();
+
+
                 register(name, email, password);
 
 
@@ -54,6 +56,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         user.put("Email", email);
         DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("User");
         user_ref.child(email).updateChildren(user);
+        //Create a customer account
 
     }
 }
