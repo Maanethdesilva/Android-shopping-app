@@ -47,6 +47,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     }
 
     //Hello there
+    //comment
     public void register(String name, String email, String password){
         HashMap<String, Object> user = new HashMap<String, Object>();
         user.put("Name", name);
