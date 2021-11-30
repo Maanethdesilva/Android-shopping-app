@@ -10,7 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JavaProject">
         <activity
+            android:name=".CustomerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPage"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilePage"
+            android:exported="false" />
+        <activity
             android:name=".Registration"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationPage"
             android:exported="false" />
         <activity
             android:name=".Registration2"
