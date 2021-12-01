@@ -13,6 +13,9 @@
             android:name=".CustomerActivity"
             android:exported="false" />
         <activity
+            android:name=".StoreOwnerActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderPage"
             android:exported="false" />
         <activity
