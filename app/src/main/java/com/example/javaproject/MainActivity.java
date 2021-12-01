@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button signup = (Button) findViewById(R.id.singupbtn);
         Button login = (Button) findViewById(R.id.loginbutton);
-        String email = ((EditText) findViewById(R.id.SignInEmailAddress)).getText().toString();
-        String password = ((EditText) findViewById(R.id.editTextTextPassword)).getText().toString();
         FAuth = FirebaseAuth.getInstance();
 
         signup.setOnClickListener(v -> {
@@ -32,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         // This is the validation and authentication code for logging in using email
         login.setOnClickListener(v -> {
+            String email = ((EditText) findViewById(R.id.SignInEmailAddress)).getText().toString();
+            String password = ((EditText) findViewById(R.id.editTextTextPassword)).getText().toString();
             if(TextUtils.isEmpty(email)){
                 Toast.makeText(MainActivity.this, "EMPTY EMAIL", Toast.LENGTH_SHORT).show();
             } else if(TextUtils.isEmpty(password)){

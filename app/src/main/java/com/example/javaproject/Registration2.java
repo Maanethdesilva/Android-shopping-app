@@ -26,14 +26,14 @@ public class Registration2 extends AppCompatActivity {
         setContentView(R.layout.activity_registration_v2);
 
         TextView register = (Button) findViewById(R.id.registerbutton);
-        String email = ((EditText) findViewById(R.id.editTextEmailAddressReg)).getText().toString();
-        String storename = ((EditText) findViewById(R.id.editTextTextPersonName)).getText().toString();
-        String password = ((EditText) findViewById(R.id.editTextPasswordReg)).getText().toString();
-        String cpassword = ((EditText) findViewById(R.id.editTextTextPassword3)).getText().toString();
         FAuth = FirebaseAuth.getInstance();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference();
 
         register.setOnClickListener(v -> {
+            String email = ((EditText) findViewById(R.id.editTextEmailAddressReg)).getText().toString();
+            String storename = ((EditText) findViewById(R.id.editTextTextPersonName)).getText().toString();
+            String password = ((EditText) findViewById(R.id.editTextPasswordReg)).getText().toString();
+            String cpassword = ((EditText) findViewById(R.id.editTextTextPassword3)).getText().toString();
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(Registration2.this, "EMPTY EMAIL", Toast.LENGTH_SHORT).show();
             } else if (TextUtils.isEmpty(password)) {
