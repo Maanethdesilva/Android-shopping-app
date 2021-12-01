@@ -51,8 +51,8 @@ public class InventoryAdapter extends ArrayAdapter<Product> {
         TextView tvPrice = (TextView) convertView.findViewById(R.id.inv_price);
 
         tvName.setText(name);
-        tvCount.setText(""+count);
-        tvPrice.setText(""+price);
+        tvCount.setText("Stock available: "+count);
+        tvPrice.setText("$"+price);
 
         return convertView;
 
