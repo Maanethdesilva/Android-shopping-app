@@ -6,11 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button signup, loginbutton;
+    private EditText eTEmail, eTPassword;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signup.setOnClickListener(this);
         loginbutton = (Button) findViewById(R.id.loginbutton);
         loginbutton.setOnClickListener(this);
+
+        eTEmail = (EditText) findViewById(R.id.signInEmailAddress);
+        eTPassword = (EditText) findViewById(R.id.signInPassword);
     }
 
     //arielle changed switch case to if statements
@@ -29,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, signupOptions.class));
         }
         if (v.getId() == R.id.loginbutton){
-            startActivity(new Intent(this, StoreOwnerActivity.class));
+
         }
     }
 }
