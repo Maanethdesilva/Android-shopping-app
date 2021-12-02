@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextEmailAddressReg"
+        android:id="@+id/emailAddress"
         android:layout_width="222dp"
         android:layout_height="51dp"
         android:layout_marginTop="80dp"
@@ -41,7 +41,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddressReg" />
+        app:layout_constraintTop_toBottomOf="@+id/emailAddress" />
 
     <Button
         android:id="@+id/registerbutton"
@@ -79,7 +79,7 @@
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmailAddressReg"
+        app:layout_constraintBottom_toTopOf="@+id/emailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
