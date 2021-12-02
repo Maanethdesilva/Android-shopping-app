@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/signInPassword"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.304" />
 
     <EditText
-        android:id="@+id/SignInEmailAddress"
+        android:id="@+id/signInEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/signInPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -55,7 +55,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignInEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/signInEmailAddress" />
 
     <TextView
         android:id="@+id/textView2"
@@ -65,7 +65,7 @@
         android:layout_marginTop="28dp"
         android:text="No account yet?"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/signInPassword" />
 
     <Button
         android:id="@+id/singupbtn"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/signInPassword"
         app:rippleColor="@color/teal_200" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
