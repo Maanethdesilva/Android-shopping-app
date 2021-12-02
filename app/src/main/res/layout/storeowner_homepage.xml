@@ -4,43 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerActivity">
+    tools:context=".StoreOwnerActivity">
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-        <TextView
-            android:id="@+id/textView8"
+
+        <Button
+            android:id="@+id/add_product_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:text="STORES"
-            android:textAlignment="center"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
+            android:onClick="addInvProduct"
+            android:text="Add a product" />
 
-        <RelativeLayout
-            android:id="@+id/customer_home_list"
+        <Button
+            android:id="@+id/edit_inv_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Inventory" />
+
+        <TextView
+            android:id="@+id/textStoresView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INVENTORY"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/inventory_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.example.javaproject.CustomerActivity">
+            tools:listitem="@layout/inventory_list_item" />
 
-
-            <ListView
-                android:id="@+id/custListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +65,7 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewProfile"
-
+            android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_person"
             app:iconGravity="textStart"
@@ -73,8 +79,9 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewOrder"
+            android:textAllCaps="true"
             app:backgroundTint="#000000"
-            app:icon="@drawable/baseline_receipt_24"
+            app:icon="@drawable/ic_stat_shopping_cart"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
             app:iconTint="#ffffff" />
@@ -86,6 +93,7 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewNotification"
+            android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_notifications"
             app:iconGravity="textStart"
@@ -112,10 +120,10 @@
             android:id="@+id/consumer_home_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
-            android:textColor="#FFFFFF"
-            android:text="CUSTOMER HOME"
+            android:background="@color/purple_500"
+            android:text="STORE OWNER HOME"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="26sp" />
     </LinearLayout>
 
