@@ -4,15 +4,17 @@ public class Product {
     private String inventory_name;
     private int count;
     private double price;
+    private String brand;
 
     public Product(){
 
     }
 
-    public Product(String inventory_name, int count, double price) {
+    public Product(String inventory_name, int count, double price, String brand) {
         this.inventory_name = inventory_name;
         this.count = count;
         this.price = price;
+        this.brand = brand;
     }
 
     public String getInventory_name() {
@@ -39,12 +41,21 @@ public class Product {
         this.count = count;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "inventory_name='" + inventory_name + '\'' +
                 ", count=" + count +
                 ", price=" + price +
+                ", brand='" + brand + '\'' +
                 '}';
     }
 }

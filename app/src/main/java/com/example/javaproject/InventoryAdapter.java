@@ -39,9 +39,10 @@ public class InventoryAdapter extends ArrayAdapter<Product> {
         String name = getItem(position).getInventory_name();
         int count = getItem(position).getCount();
         double price = getItem(position).getPrice();
+        String brand = getItem(position).getBrand();
 
         //Create object with information
-        Product product = new Product(name, count, price);
+        Product product = new Product(name, count, price, brand);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
@@ -49,10 +50,12 @@ public class InventoryAdapter extends ArrayAdapter<Product> {
         TextView tvName = (TextView) convertView.findViewById(R.id.inv_name);
         TextView tvCount = (TextView) convertView.findViewById(R.id.inv_count);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.inv_price);
+        TextView tvBrand = (TextView) convertView.findViewById(R.id.inv_brand);
 
         tvName.setText(name);
         tvCount.setText("Stock available: "+count);
         tvPrice.setText("$"+price);
+        tvBrand.setText(brand);
 
         return convertView;
 
