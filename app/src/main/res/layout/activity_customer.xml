@@ -17,90 +17,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
         <TextView
-            android:id="@+id/textStoresView"
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:text="STORES"
             android:textAlignment="center"
             android:textSize="26sp"
-            android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Store:"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"/>
+        <RelativeLayout
+            android:id="@+id/customer_home_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.javaproject.CustomerActivity">
 
-            <TextView
-                android:id="@+id/tvStoreName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Magen's Walmart"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Product:"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tvProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Potatoes"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price:"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="$15"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-        </LinearLayout>
+            <ListView
+                android:id="@+id/custListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -119,7 +59,7 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewProfile"
-            android:textAllCaps="true"
+
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_person"
             app:iconGravity="textStart"
@@ -133,9 +73,8 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewOrder"
-            android:textAllCaps="true"
             app:backgroundTint="#000000"
-            app:icon="@drawable/ic_stat_shopping_cart"
+            app:icon="@drawable/baseline_receipt_24"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
             app:iconTint="#ffffff" />
@@ -147,7 +86,6 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:onClick="viewNotification"
-            android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_notifications"
             app:iconGravity="textStart"
