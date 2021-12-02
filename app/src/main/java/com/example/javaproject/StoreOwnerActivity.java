@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class StoreOwnerActivity extends AppCompatActivity {
     private ArrayList<Product> products;
-    private String storename = "Ryans apples";
+    private String storename = "Mcdonalds";
 
 
     @Override
@@ -59,11 +59,11 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
+    public void addInvProduct(View v){
+        Intent intent = new Intent(this,AddInventoryProductActivity.class);
+        intent.putExtra("Storename", storename);
+        startActivity(intent);
+    }
 
     public void viewProfile(View v){
         startActivity(new Intent(this, ProfilePage.class));
