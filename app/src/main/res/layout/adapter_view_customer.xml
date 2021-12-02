@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+
+    <TextView
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Store Name Generic"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:id="@+id/textView1"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_weight="30.0"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="70.0">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="order"
+            android:id="@+id/orderBtn"
+            android:backgroundTint="#000000"
+            android:textAllCaps="true"
+            android:onClick="viewNotification"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
