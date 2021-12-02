@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +39,8 @@ public class StoreOwnerActivity extends AppCompatActivity {
                 products.clear();
                 for(DataSnapshot item: snapshot.getChildren()){
                     Product newP = new Product(item.child("Name").getValue().toString(),
-                            item.child("Count").getValue(int.class), item.child("Price").getValue(double.class));
+                            item.child("Count").getValue(int.class), item.child("Price").getValue(double.class),
+                            item.child("Brand").getValue().toString());
                     products.add(newP);
                     inventory_list.setAdapter(inventoryAdapter);
                 }
@@ -60,6 +62,12 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
 
     public void addInvProduct(View v){
+        Intent intent = new Intent(this,AddInventoryProductActivity.class);
+        intent.putExtra("Storename", storename);
+        startActivity(intent);
+    }
+
+    public void editInvProduct(View v){
         Intent intent = new Intent(this,AddInventoryProductActivity.class);
         intent.putExtra("Storename", storename);
         startActivity(intent);

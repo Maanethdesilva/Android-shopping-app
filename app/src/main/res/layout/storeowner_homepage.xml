@@ -25,12 +25,6 @@
             android:onClick="addInvProduct"
             android:text="Add a product" />
 
-        <Button
-            android:id="@+id/edit_inv_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Inventory" />
-
         <TextView
             android:id="@+id/textStoresView"
             android:layout_width="match_parent"

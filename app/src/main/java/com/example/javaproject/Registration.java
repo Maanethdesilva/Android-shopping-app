@@ -84,29 +84,6 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        //the following line of code was taken from youtube vid
-//        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if (task.isSuccessful()){
-//                    Account user = new Account (name, email);
-//                    String user_ref = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//                    FirebaseDatabase.getInstance().getReference("Users").child(user_ref).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if (task.isSuccessful()){
-//                                Toast.makeText(Registration.this, "successful registration", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else{
-//                                Toast.makeText(Registration.this, "Registration failed", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
-//                }else{
-//                    Toast.makeText(Registration.this, "Registration failed", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
         mAuth.createUserWithEmailAndPassword(email, password);
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         HashMap<String, Object> user = new HashMap<String, Object>();
