@@ -5,31 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView signup, loginbutton;
+    private Button signup, loginbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        signup = (TextView) findViewById(R.id.singupbtn);
+        signup = (Button) findViewById(R.id.singupbtn);
         signup.setOnClickListener(this);
-        loginbutton = (TextView) findViewById(R.id.loginbutton);
+        loginbutton = (Button) findViewById(R.id.loginbutton);
         loginbutton.setOnClickListener(this);
     }
 
+    //arielle changed switch case to if statements
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.singupbtn:
-                startActivity(new Intent(this, signupOptions.class));
-                break;
-            case R.id.loginbutton:
-                startActivity(new Intent(this, CustomerActivity.class));
-                break;
+        if (v.getId() == R.id.singupbtn){
+            startActivity(new Intent(this, signupOptions.class));
+        }
+        if (v.getId() == R.id.loginbutton){
+            startActivity(new Intent(this, StoreOwnerActivity.class));
         }
     }
 }
