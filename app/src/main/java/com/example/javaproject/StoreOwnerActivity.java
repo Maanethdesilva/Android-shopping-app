@@ -53,10 +53,6 @@ public class StoreOwnerActivity extends AppCompatActivity {
         });
         Log.d("LIST IS ", products.toString());
 
-
-
-        //Log.d("NOW LIST IS ", products.toString());
-
     }
 
 

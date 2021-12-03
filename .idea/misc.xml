@@ -10,10 +10,12 @@
         <entry key="app/src/main/res/layout/activity_select.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/adapter_view_customer.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/add_product.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/edit_product.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/inventory_list_item.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/login.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/notification_page.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/profile_page.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/register.xml" value="0.30462962962962964" />
         <entry key="app/src/main/res/layout/storeowner_homepage.xml" value="0.32473107319850586" />
       </map>
