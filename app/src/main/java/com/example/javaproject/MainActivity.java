@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
