@@ -44,9 +44,9 @@ public class ProfilePage extends AppCompatActivity {
         mUid = user.getUid();
 
 
-        final TextView greetingTextView = (TextView) findViewById(R.id.tvgreet);
-        final TextView firstNameTextView = (TextView) findViewById(R.id.tvfn);
-        final TextView lastNameTextView = (TextView) findViewById(R.id.tvln);
+        final TextView greetingTextView = (TextView) findViewById(R.id.tvGreet);
+        final TextView firstNameTextView = (TextView) findViewById(R.id.tvFn);
+        final TextView lastNameTextView = (TextView) findViewById(R.id.tvLn);
         final TextView emailTextView = (TextView) findViewById(R.id.tvEmailAddress);
         reference.child(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
