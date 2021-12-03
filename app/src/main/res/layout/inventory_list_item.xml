@@ -8,9 +8,9 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="10dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
+        android:layout_weight="0.8"
         android:orientation="vertical">
 
         <TextView
@@ -67,21 +67,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:layout_marginRight="20dp"
         android:text="edit"
         tools:layout_weight="0.02" />
 
-    <Button
-        android:id="@+id/delete_btn"
-        android:layout_width="40dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:layout_marginRight="20dp"
-        android:layout_weight="0.6"
-        android:gravity="center|center_horizontal|left"
-        app:icon="@drawable/ic_action_name"
-        app:iconGravity="end"
-        app:iconTint="#FFFFFF"
-        tools:layout_weight="0.02" />
+        android:layout_weight="0.8"
+        app:srcCompat="@drawable/ic_action_name" />
 
 </LinearLayout>
