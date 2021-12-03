@@ -38,7 +38,6 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.getId() == R.id.registerbutton){
             registerStore(eTStoreName, eTPhoneNumber, eTEmail, eTPassword);
-            startActivity(new Intent(this, MainActivity.class));
         }
     }
 
@@ -47,6 +46,7 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
         String phoneNumber = eTPhoneNumber.getText().toString().trim();
         String email = eTEmail.getText().toString();
         String password = eTPassword.getText().toString();
+
         if (storeName.isEmpty()){
             eTStoreName.setError("Field is empty");
             eTStoreName.requestFocus();
@@ -66,14 +66,25 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
             eTPassword.requestFocus();
             return;
         }
-
-        mAuth.createUserWithEmailAndPassword(email, password);
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        HashMap<String, Object> user = new HashMap<String, Object>();
-        user.put("Store Name", storeName);
-        user.put("Phone Number", phoneNumber);
-        user.put("Email Address", email);
-        DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("StoresTest");
-        user_ref.child(userID).updateChildren(user);
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(task -> {
+                    boolean isNotExistingEmail = task.getResult().getSignInMethods().isEmpty();
+                    if (isNotExistingEmail) {
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task1 -> {
+                            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            HashMap<String, Object> user = new HashMap<>();
+                            user.put("Store Name", storeName);
+                            user.put("Phone Number", phoneNumber);
+                            user.put("Email Address", email);
+                            user.put("isStoreOwner", true);
+                            DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
+                            user_ref.child(userID).updateChildren(user);
+                            startActivity(new Intent(this, MainActivity.class));
+                        });
+                    } else {
+                        eTEmail.setError("This email is linked to an existing account");
+                        eTEmail.requestFocus();
+                    }
+                });
     }
 }
