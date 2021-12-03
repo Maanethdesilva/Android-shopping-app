@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JavaProject">
         <activity
+            android:name=".ViewDetailsPage"
+            android:exported="false" />
+        <activity
             android:name=".MyOrdersPage"
             android:exported="false" />
         <activity
@@ -23,9 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".StoreOwnerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OrderPage"
             android:exported="false" />
         <activity
             android:name=".ProfilePage"
