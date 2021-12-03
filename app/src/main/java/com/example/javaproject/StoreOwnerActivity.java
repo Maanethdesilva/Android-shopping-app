@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,6 +71,7 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 
@@ -85,6 +87,10 @@ public class StoreOwnerActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AddInventoryProductActivity.class);
         intent.putExtra("Storename", storename);
         startActivity(intent);
+    }
+
+    public void deleteInvProduct(View v){
+
     }
 
     public void viewProfile(View v){
