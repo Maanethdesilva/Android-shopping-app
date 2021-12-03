@@ -16,6 +16,9 @@
             android:name=".CustomerActivity"
             android:exported="false" />
         <activity
+            android:name=".EditInventoryProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddInventoryProductActivity"
             android:exported="false" />
         <activity
