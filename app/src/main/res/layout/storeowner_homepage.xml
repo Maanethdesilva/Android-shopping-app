@@ -75,7 +75,7 @@
             android:onClick="viewOrder"
             android:textAllCaps="true"
             app:backgroundTint="#000000"
-            app:icon="@drawable/ic_stat_shopping_cart"
+            app:icon="@drawable/baseline_receipt_24"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
             app:iconTint="#ffffff" />

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,24 @@ public class StoreOwnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storeowner_homepage);
 
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("Users");
+        users.child(userId).child("Store Name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                storename = snapshot.getValue().toString();
+                output(storename);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void output(String storename){
         ArrayList<Product> products = new ArrayList<Product>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Stores").child(storename).child("Inventory");
         InventoryAdapter inventoryAdapter = new InventoryAdapter(this, R.layout.inventory_list_item, products);
@@ -51,8 +70,6 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
             }
         });
-        Log.d("LIST IS ", products.toString());
-
     }
 
 
@@ -64,6 +81,7 @@ public class StoreOwnerActivity extends AppCompatActivity {
     }
 
     public void editInvProduct(View v){
+        
         Intent intent = new Intent(this,AddInventoryProductActivity.class);
         intent.putExtra("Storename", storename);
         startActivity(intent);

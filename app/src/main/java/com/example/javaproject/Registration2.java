@@ -79,6 +79,12 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
                             user.put("isStoreOwner", true);
                             DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
                             user_ref.child(userID).updateChildren(user);
+
+                            HashMap<String, Object> store = new HashMap<>();
+                            store.put("Storename", storeName);
+                            store.put("OwnerId", userID);
+                            DatabaseReference store_ref = FirebaseDatabase.getInstance().getReference().child("Stores");
+                            store_ref.child(storeName).updateChildren(store);
                             startActivity(new Intent(this, MainActivity.class));
                         });
                     } else {
