@@ -53,6 +53,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void login() {
         String email = eTEmail.getText().toString().trim();
         String password = eTPassword.getText().toString();
+
+        if (email.isEmpty()){
+            eTEmail.setError("Field is empty");
+            eTEmail.requestFocus();
+            return;
+        }
+        if (password.isEmpty()){
+            eTPassword.setError("Field is empty");
+            eTPassword.requestFocus();
+            return;
+        }else if (password.length() < 6){
+            eTPassword.setError("Password is too short");
+            eTPassword.requestFocus();
+            return;
+        }
+
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
             if (task.isSuccessful()){
