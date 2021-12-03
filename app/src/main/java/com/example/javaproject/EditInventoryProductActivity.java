@@ -7,10 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -49,11 +54,29 @@ public class EditInventoryProductActivity extends AppCompatActivity {
             map.put("Count", count);
             map.put("Price", price);
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Stores").child(storename)
-                    .child("Inventory");
-            ref.child(getIntent().getStringExtra("Name")).updateChildren(map);
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("Users");
+            users.child(userId).child("Store Name").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    storename = snapshot.getValue().toString();
 
-            startActivity(new Intent(EditInventoryProductActivity.this, StoreOwnerActivity.class));
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Stores").child(storename)
+                            .child("Inventory");
+                    ref.child(getIntent().getStringExtra("Name")).setValue(null);
+                    ref.child(name).updateChildren(map);
+
+                    startActivity(new Intent(EditInventoryProductActivity.this, StoreOwnerActivity.class));
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
         });
     }
 
