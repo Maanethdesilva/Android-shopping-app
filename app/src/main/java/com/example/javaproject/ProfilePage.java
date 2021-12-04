@@ -69,10 +69,10 @@ public class ProfilePage extends AppCompatActivity {
                         Object object = snapshot.child(sn).getValue();
                         if(object != null){
                             String mSn = object.toString();
-                            greeting = "You are signed in as a store owner of " + mSn;
+                            greeting = "You are signed in as a store owner of " + mSn + ".";
                             greetingTextView.setText(greeting);
 
-                            text1 = sn + mSn + ": ";
+                            text1 = sn + ": " + mSn;
                             firstNameTextView.setText(text1);
 
                             lastNameTextView.setVisibility(View.GONE);
@@ -85,7 +85,7 @@ public class ProfilePage extends AppCompatActivity {
                             String mFn = firstObject.toString();
                             String mLn = lastObject.toString();
                             profileHeaderTextView.setBackgroundColor(BLACK);
-                            greeting = "Welcome, " +mFn + "!";
+                            greeting = "Welcome, " +mFn + ".";
                             text1 = fn + ": " + mFn;
                             text2 = ln + ": " + mLn;
                             greetingTextView.setText(greeting);
