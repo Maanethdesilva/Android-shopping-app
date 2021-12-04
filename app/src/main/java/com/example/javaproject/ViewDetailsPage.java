@@ -42,7 +42,7 @@ public class ViewDetailsPage extends AppCompatActivity {
         //set list values
         ListView products_list = (ListView) findViewById(R.id.view_details_products_list);
 
-        InventoryAdapter cartAdapter = new InventoryAdapter(this, R.layout.inventory_list_item, cart);
+        ViewDetailsAdapter cartAdapter = new ViewDetailsAdapter(this, R.layout.inventory_list_item, cart);
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(customerID).child("Orders");
         ref.child(String.valueOf(orderID)).child("Cart").addValueEventListener(new ValueEventListener() {
             @Override
