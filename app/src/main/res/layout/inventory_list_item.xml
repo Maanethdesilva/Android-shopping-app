@@ -68,7 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:text="edit"
-        tools:layout_weight="0.02" />
+        android:visibility="visible"
+        tools:layout_weight="0.02"
+        android:backgroundTint="#000000"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -77,6 +79,7 @@
         android:layout_marginTop="55dp"
         android:layout_marginRight="20dp"
         android:layout_weight="0.8"
+        android:visibility="visible"
         app:srcCompat="@drawable/ic_action_name" />
 
 </LinearLayout>
