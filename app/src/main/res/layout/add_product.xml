@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Enter Product Name"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_title" />
@@ -38,7 +38,7 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Enter Product Brand"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_title" />
@@ -50,6 +50,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="Enter Stock Quantity"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_name" />
@@ -85,7 +86,7 @@
             android:layout_height="54dp"
             android:gravity="center|left"
             android:text="$"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/add_product_price"
@@ -93,7 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.9"
             android:ems="10"
-            android:hint="Enter Price"/>
+            android:hint="Enter Price"
+            android:inputType="numberDecimal|number" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
