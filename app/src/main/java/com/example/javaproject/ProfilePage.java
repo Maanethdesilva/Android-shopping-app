@@ -123,6 +123,4 @@ public class ProfilePage extends AppCompatActivity {
         startActivity(new Intent(ProfilePage.this, CustomerActivity.class));
     }
 
-
-
 }
