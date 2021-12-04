@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 
 public class ProfilePage extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class ProfilePage extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String mUid;
+    public static final int BLACK = -16777216;
 
 
     @Override
@@ -48,24 +51,53 @@ public class ProfilePage extends AppCompatActivity {
         final TextView firstNameTextView = (TextView) findViewById(R.id.tvFn);
         final TextView lastNameTextView = (TextView) findViewById(R.id.tvLn);
         final TextView emailTextView = (TextView) findViewById(R.id.tvEmailAddress);
+        final TextView phoneNumTextView = (TextView)findViewById(R.id.tvPhoneNum);
+        final TextView profileHeaderTextView = (TextView)findViewById(R.id.tvProfileHeader);
+
         reference.child(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final String fn = "First Name";
                 final String ln = "Last Name";
                 final String em = "Email Address";
+                final String storeOwner = "isStoreOwner";
+                final String sn = "Store Name";
+                final String ph = "Phone Number";
 
-                String mFn = snapshot.child(fn).getValue().toString();
-                String mLn = snapshot.child(ln).getValue().toString();
+                final String space = ": ";
+                final String greetingend = ".";
+                final String greetingmsg = "Welcome, ";
+                final String greetingmsg2 = "You are signed in as a Store Owner of ";
+
+
+                if (snapshot.child(storeOwner).getValue(boolean.class)){
+                    String mSn = snapshot.child(sn).getValue().toString();
+                    greetingTextView.setText(greetingmsg2 + mSn + greetingend);
+                    firstNameTextView.setText(sn + space + mSn);
+                    lastNameTextView.setVisibility(View.GONE);
+
+
+
+                } else {
+                    String mFn = snapshot.child(fn).getValue().toString();
+                    String mLn = snapshot.child(ln).getValue().toString();
+                    profileHeaderTextView.setBackgroundColor(BLACK);
+                    greetingTextView.setText(greetingmsg + mFn + greetingend);
+                    firstNameTextView.setText(fn + space + mFn);
+                    lastNameTextView.setText(ln + space + mLn);
+
+                }
+
+
+                // display email and phone number
+
                 String mEm = snapshot.child(em).getValue().toString();
+                String mPh = snapshot.child(ph).getValue().toString();
 
 
 
-
-                greetingTextView.setText("Welcome, " + mFn + "!");
-                firstNameTextView.setText("First name: "+ mFn);
-                lastNameTextView.setText("Last name: " + mLn);
-                emailTextView.setText("Email address: " + mEm);
+                phoneNumTextView.setText(ph + space + mPh);
+                emailTextView.setText(em + space + mEm);
             }
 
             @Override
@@ -74,30 +106,6 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
-        /*
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Account account = snapshot.getValue(Account.class);
-
-                firstNameTextView.setText(account.getfName());
-                lastNameTextView.setText(account.getlName());
-                emailTextView.setText(account.getEmail());
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfilePage.this, "Something went wrong.", Toast.LENGTH_LONG).show();
-            }
-        });
-*/
-
-
-        // sign out
         btnSignOut = (Button) findViewById(R.id.custSignOut);
 
         btnSignOut.setOnClickListener(new View.OnClickListener() {
