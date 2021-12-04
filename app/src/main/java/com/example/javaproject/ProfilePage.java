@@ -72,7 +72,7 @@ public class ProfilePage extends AppCompatActivity {
                             greeting = "You are signed in as a store owner of " + mSn;
                             greetingTextView.setText(greeting);
 
-                            text1 = sn + ": ";
+                            text1 = sn + mSn + ": ";
                             firstNameTextView.setText(text1);
 
                             lastNameTextView.setVisibility(View.GONE);
