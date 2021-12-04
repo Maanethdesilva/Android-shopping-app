@@ -2,10 +2,8 @@ package com.example.javaproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
 
 public class ProfilePage extends AppCompatActivity {
     private static final String TAG = "ProfilePage";
@@ -63,41 +57,59 @@ public class ProfilePage extends AppCompatActivity {
                 final String storeOwner = "isStoreOwner";
                 final String sn = "Store Name";
                 final String ph = "Phone Number";
+                final String greeting;
+                final String text1;
+                final String text2;
+                final String text3;
+                final String text4;
 
-                final String space = ": ";
-                final String greetingend = ".";
-                final String greetingmsg = "Welcome, ";
-                final String greetingmsg2 = "You are signed in as a Store Owner of ";
+                Boolean isStore = snapshot.child(storeOwner).getValue(boolean.class);
+                if (isStore != null) {
+                    if(isStore) {
+                        Object object = snapshot.child(sn).getValue();
+                        if(object != null){
+                            String mSn = object.toString();
+                            greeting = "You are signed in as a store owner of " + mSn;
+                            greetingTextView.setText(greeting);
 
+                            text1 = sn + ": ";
+                            firstNameTextView.setText(text1);
 
-                if (snapshot.child(storeOwner).getValue(boolean.class)){
-                    String mSn = snapshot.child(sn).getValue().toString();
-                    greetingTextView.setText(greetingmsg2 + mSn + greetingend);
-                    firstNameTextView.setText(sn + space + mSn);
-                    lastNameTextView.setVisibility(View.GONE);
+                            lastNameTextView.setVisibility(View.GONE);
+                        }
 
-
-
-                } else {
-                    String mFn = snapshot.child(fn).getValue().toString();
-                    String mLn = snapshot.child(ln).getValue().toString();
-                    profileHeaderTextView.setBackgroundColor(BLACK);
-                    greetingTextView.setText(greetingmsg + mFn + greetingend);
-                    firstNameTextView.setText(fn + space + mFn);
-                    lastNameTextView.setText(ln + space + mLn);
+                    } else {
+                        Object firstObject = snapshot.child(fn).getValue();
+                        Object lastObject = snapshot.child(ln).getValue();
+                        if(firstObject != null && lastObject != null){
+                            String mFn = firstObject.toString();
+                            String mLn = lastObject.toString();
+                            profileHeaderTextView.setBackgroundColor(BLACK);
+                            greeting = "Welcome, " +mFn + "!";
+                            text1 = fn + ": " + mFn;
+                            text2 = ln + ": " + mLn;
+                            greetingTextView.setText(greeting);
+                            firstNameTextView.setText(text1);
+                            lastNameTextView.setText(text2);
+                        }
+                    }
 
                 }
 
 
                 // display email and phone number
+                Object email = snapshot.child(em).getValue();
+                Object phone = snapshot.child(ph).getValue();
+                if(email != null && phone != null){
+                    String mEm = email.toString();
+                    String mPh = phone.toString();
+                    text3 = ph + ": " + mPh;
+                    text4 = em + ": " + mEm;
+                    phoneNumTextView.setText(text3);
+                    emailTextView.setText(text4);
+                }
 
-                String mEm = snapshot.child(em).getValue().toString();
-                String mPh = snapshot.child(ph).getValue().toString();
 
-
-
-                phoneNumTextView.setText(ph + space + mPh);
-                emailTextView.setText(em + space + mEm);
             }
 
             @Override
@@ -106,22 +118,22 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
+
+
         btnSignOut = (Button) findViewById(R.id.custSignOut);
 
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(ProfilePage.this, MainActivity.class));
-                Toast.makeText(ProfilePage.this,"Signed Out.", Toast.LENGTH_LONG).show();
-            }
+        btnSignOut.setOnClickListener((View v) -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(ProfilePage.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            Toast.makeText(ProfilePage.this,"Signed Out.", Toast.LENGTH_LONG).show();
         });
 
 
     }
-    public void viewCustomerHome(View v){
-        startActivity(new Intent(ProfilePage.this, CustomerActivity.class));
-    }
+
 
 
 
