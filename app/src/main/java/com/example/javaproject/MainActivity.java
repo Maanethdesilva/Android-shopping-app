@@ -5,38 +5,57 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Contract.View {
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Contract.Presenter presenter;
+    EditText eTEmail, eTPassword;
 
-    private Button signup, loginbutton;
-    private EditText eTEmail, eTPassword;
-    private FirebaseAuth mAuth;
+    @Override
+    public String getEmail() {
+        eTEmail = findViewById(R.id.signInEmailAddress);
+        return eTEmail.getText().toString().trim();
+    }
+
+
+    @Override
+    public String getPassword() {
+        eTPassword = findViewById(R.id.signInPassword);
+        return eTPassword.getText().toString();
+    }
+
+    @Override
+    public void displayEmailMessage(String message) {
+        eTEmail.setError(message);
+        eTEmail.requestFocus();
+    }
+
+    @Override
+    public void displayPasswordMessage(String message) {
+        eTPassword.setError(message);
+        eTPassword.requestFocus();
+    }
+
+    @Override
+    public void storeOwnerPage() {
+        startActivity(new Intent(this, StoreOwnerActivity.class));
+    }
+
+    @Override
+    public void customerPage() {
+        startActivity(new Intent(this, CustomerActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        signup = findViewById(R.id.singupbtn);
+        presenter = new MyPresenter(new MyModel(presenter), this);
+        Button signup = findViewById(R.id.singupbtn);
         signup.setOnClickListener(this);
-        loginbutton = findViewById(R.id.loginbutton);
-        loginbutton.setOnClickListener(this);
-
-        eTEmail = findViewById(R.id.signInEmailAddress);
-        eTPassword = findViewById(R.id.signInPassword);
-        mAuth = FirebaseAuth.getInstance();
+        Button login = findViewById(R.id.loginbutton);
+        login.setOnClickListener(this);
     }
 
     @Override
@@ -45,51 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, signupOptions.class));
         }
         if (v.getId() == R.id.loginbutton){
-            login();
+            presenter.checkCredentials();
         }
-    }
-
-    private void login() {
-        String email = eTEmail.getText().toString().trim();
-        String password = eTPassword.getText().toString();
-
-        if (email.isEmpty()){
-            eTEmail.setError("Field is empty");
-            eTEmail.requestFocus();
-            return;
-        }
-        if (password.isEmpty()){
-            eTPassword.setError("Field is empty");
-            eTPassword.requestFocus();
-            return;
-        }else if (password.length() < 6){
-            eTPassword.setError("Password is too short");
-            eTPassword.requestFocus();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            if (task.isSuccessful()){
-                DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
-                user_ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        boolean isStoreOwner = snapshot.child(userID).child("isStoreOwner").getValue(boolean.class);
-                        if (isStoreOwner) {
-                            startActivity(new Intent(MainActivity.this, StoreOwnerActivity.class));
-                        }else {
-                            startActivity(new Intent(MainActivity.this, CustomerActivity.class));
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-            } else {
-                eTEmail.setError("Invalid Credentials");
-                eTEmail.requestFocus();
-            }
-        });
     }
 }
