@@ -69,7 +69,7 @@ public class CustomerActivity extends AppCompatActivity {
         startActivity(new Intent(CustomerActivity.this, NotificationPage.class));
     }
     public void viewOrder(View v){
-        startActivity(new Intent(CustomerActivity.this, OrderPage.class));
+        startActivity(new Intent(CustomerActivity.this, MyOrdersPage.class));
     }
 
 }

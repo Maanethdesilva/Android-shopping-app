@@ -100,6 +100,6 @@ public class StoreOwnerActivity extends AppCompatActivity {
         startActivity(new Intent(this, NotificationPage.class));
     }
     public void viewOrder(View v){
-        startActivity(new Intent(this, OrderPage.class));
+        startActivity(new Intent(this, MyOrdersPage.class));
     }
 }
