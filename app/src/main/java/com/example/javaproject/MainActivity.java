@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        presenter = new MyPresenter(new MyModel(presenter), this);
+        presenter = new MyPresenter(new MyModel(), this);
         Button signup = findViewById(R.id.singupbtn);
         signup.setOnClickListener(this);
         Button login = findViewById(R.id.loginbutton);

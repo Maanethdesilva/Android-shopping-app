@@ -3,7 +3,7 @@ package com.example.javaproject;
 public interface Contract {
 
     interface Model{
-        void loginChecker(String email, String password);
+        void loginChecker(String email, String password, MyPresenter presenter);
     }
 
     interface View{
