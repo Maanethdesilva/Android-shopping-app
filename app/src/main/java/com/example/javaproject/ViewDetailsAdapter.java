@@ -68,7 +68,6 @@ public class ViewDetailsAdapter extends ArrayAdapter<Product> {
         tvButton.setVisibility(convertView.GONE);
         tvDelete.setVisibility(convertView.GONE);
 
-
         return convertView;
 
     }
