@@ -23,15 +23,15 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="70.0">
+
         <Button
+            android:id="@+id/orderBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:text="order"
-            android:id="@+id/orderBtn"
             android:backgroundTint="#000000"
-            android:textAllCaps="true"
-            android:onClick="viewNotification"/>
+            android:text="order"
+            android:textAllCaps="true" />
 
 
 
