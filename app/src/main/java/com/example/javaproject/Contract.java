@@ -16,9 +16,9 @@ public interface Contract {
     }
 
     interface Presenter{
-            void checkCredentials();
-            void unsuccessful();
-            void navigateStore();
-            void navigateCustomer();
+        void checkCredentials();
+        void unsuccessful();
+        void navigateStore();
+        void navigateCustomer();
     }
 }
