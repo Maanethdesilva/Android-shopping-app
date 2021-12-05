@@ -23,15 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ViewDetailsAdapter extends ArrayAdapter<Product> {
-    private Context mContext;
+    private final Context mContext;
     int mResource;
 
-    /**
-     *
-     * @param context
-     * @param resource
-     * @param objects
-     */
     public ViewDetailsAdapter(@NonNull Context context, int resource, ArrayList<Product> objects) {
         super(context, resource, objects);
         mContext = context;
@@ -53,12 +47,12 @@ public class ViewDetailsAdapter extends ArrayAdapter<Product> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        TextView tvName = (TextView) convertView.findViewById(R.id.inv_name);
-        TextView tvCount = (TextView) convertView.findViewById(R.id.inv_count);
-        TextView tvPrice = (TextView) convertView.findViewById(R.id.inv_price);
-        TextView tvBrand = (TextView) convertView.findViewById(R.id.inv_brand);
-        Button tvButton = (Button) convertView.findViewById(R.id.edit_inv_btn);
-        ImageView tvDelete = (ImageView) convertView.findViewById(R.id.imageView);
+        TextView tvName = convertView.findViewById(R.id.inv_name);
+        TextView tvCount = convertView.findViewById(R.id.inv_count);
+        TextView tvPrice = convertView.findViewById(R.id.inv_price);
+        TextView tvBrand = convertView.findViewById(R.id.inv_brand);
+        Button tvButton = convertView.findViewById(R.id.edit_inv_btn);
+        ImageView tvDelete = convertView.findViewById(R.id.imageView);
 
         tvName.setText(name);
         tvCount.setText("Quantity: "+count);
