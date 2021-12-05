@@ -62,10 +62,12 @@ public class CartAdapter extends ArrayAdapter<Product> {
         TextView tvCount = (TextView) convertView.findViewById(R.id.inv_count);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.inv_price);
         TextView tvBrand = (TextView) convertView.findViewById(R.id.inv_brand);
-        Button tvButton = (Button) convertView.findViewById(R.id.edit_inv_btn);
-        ImageView tvDelete = (ImageView) convertView.findViewById(R.id.imageView);
+        ((Button) convertView.findViewById(R.id.edit_inv_btn)).setVisibility(View.GONE);
+        ((ImageView) convertView.findViewById(R.id.imageView)).setVisibility(View.GONE);
+
 
         NumberPicker tvQuantity = (NumberPicker) convertView.findViewById(R.id.editTextNumber);
+        tvQuantity.setVisibility(View.VISIBLE);
         tvQuantity.setMaxValue(10);
         tvQuantity.setMinValue(0);
         tvQuantity.setValue(getItem(position).getCount());
@@ -89,8 +91,6 @@ public class CartAdapter extends ArrayAdapter<Product> {
         tvPrice.setText("$"+price);
         tvBrand.setText(brand);
         tvCount.setText("Quantity: "+count);
-
-        tvDelete.setVisibility(convertView.GONE);
 
 /*
         tvButton.setOnClickListener(new View.OnClickListener() {
