@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ public class ViewDetailsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_details_page);
 
-        int orderID = getIntent().getIntExtra("Order ID", 0);
+        String orderID = getIntent().getStringExtra("Order ID");
         double total = getIntent().getDoubleExtra("Total", 0);
         String customerID = getIntent().getStringExtra("Customer ID");
         ArrayList<Product> cart = new ArrayList<>();
@@ -33,9 +35,13 @@ public class ViewDetailsPage extends AppCompatActivity {
         //set list valuesViewDetailsPage
         ListView products_list = findViewById(R.id.view_details_products_list);
 
+
         ViewDetailsAdapter cartAdapter = new ViewDetailsAdapter(this, R.layout.inventory_list_item, cart);
+        products_list.setAdapter(cartAdapter);
+
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(customerID).child("Orders");
-        ref.child(String.valueOf(orderID)).child("Cart").addValueEventListener(new ValueEventListener() {
+        ref.child(orderID).child("Cart").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cart.clear();
@@ -44,12 +50,11 @@ public class ViewDetailsPage extends AppCompatActivity {
                             item.child("Count").getValue(int.class), item.child("Price").getValue(double.class),
                             item.child("Brand").getValue().toString());
                     cart.add(newP);
-                    products_list.setAdapter(cartAdapter);
                 }
+                cartAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

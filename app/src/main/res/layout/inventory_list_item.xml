@@ -5,91 +5,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.8"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/inv_name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="bottom|left"
-            android:paddingLeft="20dp"
-            android:text="Inventory name"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/inv_count"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/inv_name"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="20dp"
-            android:text="Count"
-            android:textColor="#4CAF50"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/inv_price"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/inv_count"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="20dp"
-            android:text="Price"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/inv_brand"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/inv_count"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="20dp"
-            android:text="Brand"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/edit_inv_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:backgroundTint="#000000"
-        android:text="edit"
-        android:visibility="visible"
-        tools:layout_weight="0.02" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="0.8"
-        android:visibility="visible"
-        app:srcCompat="@drawable/ic_action_name" />
-
-    <NumberPicker
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:touchscreenBlocksFocus="true"
-        android:visibility="gone"></NumberPicker>
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/inv_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="bottom|left"
+                android:paddingLeft="20dp"
+                android:text="Inventory name"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/inv_count"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/inv_name"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Count"
+                android:textColor="#4CAF50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/inv_stock_available"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/inv_name"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Count"
+                android:textColor="#4CAF50"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/inv_price"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/inv_count"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Price"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/inv_brand"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/inv_count"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Brand"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/edit_inv_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:backgroundTint="#000000"
+            android:text="edit"
+            android:visibility="visible"
+            tools:layout_weight="0.02" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.8"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_action_name" />
+
+        <NumberPicker
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:touchscreenBlocksFocus="true"
+            android:visibility="gone"></NumberPicker>
+    </LinearLayout>
 
 
 </LinearLayout>

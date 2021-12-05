@@ -38,19 +38,10 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //get order information
         String customerID = getItem(position).getCustomerID();
-        final String[] customerName = new String[1];
+
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(customerID);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                customerName[0] = snapshot.child("First Name").getValue().toString() + snapshot.child("Last Name").getValue().toString();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         String orderID = getItem(position).getOrderID();
         String status = getItem(position).getStatus();
         double total = getItem(position).getTotal();
@@ -60,14 +51,30 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
 
         //where we need to store the information
         TextView tvStoreName = convertView.findViewById(R.id.orders_store_name);
-        TextView tvCustomerName = convertView.findViewById(R.id.orders_customer_name);
         TextView tvOrderID = convertView.findViewById(R.id.orders_orderID);
         TextView tvStatus = convertView.findViewById(R.id.orders_order_status);
         Button btnViewDetails = convertView.findViewById(R.id.orders_view_details);
         Button btnConfirmOrder = convertView.findViewById(R.id.orders_confirm_order);
+        TextView tvCustomerName = convertView.findViewById(R.id.orders_customer_name);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String customerName = snapshot.child("First Name").getValue().toString() + " " + snapshot.child("Last Name").getValue().toString();
+                tvCustomerName.setText(customerName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        if(status.equals("Ready")){
+            btnConfirmOrder.setVisibility(View.GONE);
+        }
 
         //display the information
-        tvCustomerName.setText("Customer Name: "+ customerName[0]);
         tvOrderID.setText("Order ID: " + orderID);
         tvStatus.setText("Order Status: " + status);
         tvStoreName.setVisibility(View.GONE);
@@ -82,7 +89,16 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
         });
 
         //button to confirm order
-        btnConfirmOrder.setOnClickListener(v -> Toast.makeText(mContext, "Customer has been notified", Toast.LENGTH_LONG));
+        btnConfirmOrder.setOnClickListener(v -> {
+            Toast.makeText(mContext, "Customer has been notified", Toast.LENGTH_LONG);
+            btnConfirmOrder.setVisibility(View.GONE);
+
+            ref.child("Notifications").push().setValue("Your order is now ready!\nFrom: " + getItem(position).storeName);
+            ref.child("Orders").child(orderID).child("Status").setValue("Ready");
+            FirebaseDatabase.getInstance().getReference().child("Stores").child(getItem(position).storeName).child("Orders")
+                    .child(orderID).child("Status").setValue("Ready");
+
+        });
 
         return convertView;
     }

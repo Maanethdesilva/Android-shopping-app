@@ -31,12 +31,6 @@ public class CartAdapter extends ArrayAdapter<Product> {
     private Context mContext;
     int mResource;
 
-    /**
-     *
-     * @param context
-     * @param resource
-     * @param objects
-     */
     public CartAdapter(@NonNull Context context, int resource, ArrayList<Product> objects) {
         super(context, resource, objects);
         mContext = context;
@@ -51,6 +45,7 @@ public class CartAdapter extends ArrayAdapter<Product> {
         int count = getItem(position).getCount();
         double price = getItem(position).getPrice();
         String brand = getItem(position).getBrand();
+        int stock = getItem(position).getStock();
 
         //Create object with information
         Product product = new Product(name, count, price, brand);
@@ -62,13 +57,15 @@ public class CartAdapter extends ArrayAdapter<Product> {
         TextView tvCount = (TextView) convertView.findViewById(R.id.inv_count);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.inv_price);
         TextView tvBrand = (TextView) convertView.findViewById(R.id.inv_brand);
+        TextView tvStock = (TextView) convertView.findViewById(R.id.inv_stock_available);
+        tvStock.setVisibility(View.VISIBLE);
         ((Button) convertView.findViewById(R.id.edit_inv_btn)).setVisibility(View.GONE);
         ((ImageView) convertView.findViewById(R.id.imageView)).setVisibility(View.GONE);
 
 
         NumberPicker tvQuantity = (NumberPicker) convertView.findViewById(R.id.editTextNumber);
         tvQuantity.setVisibility(View.VISIBLE);
-        tvQuantity.setMaxValue(10);
+        tvQuantity.setMaxValue(stock);
         tvQuantity.setMinValue(0);
         tvQuantity.setValue(getItem(position).getCount());
 
@@ -84,13 +81,11 @@ public class CartAdapter extends ArrayAdapter<Product> {
         });
 
 
-
-
-
         tvName.setText(name);
         tvPrice.setText("$"+price);
         tvBrand.setText(brand);
         tvCount.setText("Quantity: "+count);
+
 
 /*
         tvButton.setOnClickListener(new View.OnClickListener() {

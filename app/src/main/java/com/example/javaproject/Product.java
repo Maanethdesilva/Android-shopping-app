@@ -5,6 +5,7 @@ public class Product {
     private int count;
     private double price;
     private String brand;
+    private int stock;  //To be used for placing orders
 
     public Product(){
 
@@ -15,6 +16,14 @@ public class Product {
         this.count = count;
         this.price = price;
         this.brand = brand;
+    }
+
+    public Product(String inventory_name, int count, double price, String brand, int stock) {
+        this.inventory_name = inventory_name;
+        this.count = count;
+        this.price = price;
+        this.brand = brand;
+        this.stock = stock;
     }
 
     public String getInventory_name() {
@@ -47,6 +56,10 @@ public class Product {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public int getStock() {
+        return stock;
     }
 
     @Override
