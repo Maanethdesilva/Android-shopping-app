@@ -6,12 +6,12 @@ public class Order {
 
     String storeName;
     String customerID;
-    int orderID;
+    String orderID;
     String status;
     ArrayList<Product> cart;
     double total;
 
-    public Order(String storeName, String customerName, int orderID, String status, ArrayList<Product> cart, double total) {
+    public Order(String storeName, String customerName, String orderID, String status, ArrayList<Product> cart, double total) {
         this.storeName = storeName;
         this.customerID = customerName;
         this.orderID = orderID;
@@ -26,7 +26,7 @@ public class Order {
 
     public String getCustomerID() {return customerID;}
 
-    public int getOrderID() { return orderID;}
+    public String getOrderID() { return orderID;}
 
     public String getStatus() {return status;}
 

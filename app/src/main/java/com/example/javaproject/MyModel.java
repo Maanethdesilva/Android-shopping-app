@@ -19,8 +19,9 @@ public class MyModel implements Contract.Model {
     @Override
     public void loginChecker(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
             if (task.isSuccessful()){
+                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
                 user_ref.addValueEventListener(new ValueEventListener() {
                     @Override
