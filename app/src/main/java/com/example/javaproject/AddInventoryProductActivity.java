@@ -1,18 +1,13 @@
 package com.example.javaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.HashMap;
 
 public class AddInventoryProductActivity extends AppCompatActivity {
@@ -22,7 +17,7 @@ public class AddInventoryProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_product);
         storename = getIntent().getStringExtra("Storename");
-        Button btn = (Button)findViewById(R.id.add_product_submit_btn);
+        Button btn = findViewById(R.id.add_product_submit_btn);
         btn.setOnClickListener(v->{
             String name = ((EditText)findViewById(R.id.add_product_name)).getText().toString();
             String brand = ((EditText)findViewById(R.id.add_product_brand)).getText().toString();

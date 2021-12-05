@@ -19,7 +19,6 @@ public class MyModel implements Contract.Model {
     @Override
     public void loginChecker(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-
             if (task.isSuccessful()){
                 String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -36,7 +35,6 @@ public class MyModel implements Contract.Model {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
             }else {
