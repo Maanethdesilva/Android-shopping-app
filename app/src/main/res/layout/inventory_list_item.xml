@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -67,10 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
+        android:backgroundTint="#000000"
         android:text="edit"
         android:visibility="visible"
-        tools:layout_weight="0.02"
-        android:backgroundTint="#000000"/>
+        tools:layout_weight="0.02" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -81,5 +81,15 @@
         android:layout_weight="0.8"
         android:visibility="visible"
         app:srcCompat="@drawable/ic_action_name" />
+
+    <NumberPicker
+        android:id="@+id/editTextNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:touchscreenBlocksFocus="true"
+        android:visibility="gone"></NumberPicker>
+
 
 </LinearLayout>
