@@ -55,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginRight="10dp"
             android:backgroundTint="@color/black"
             android:gravity="center"
             android:onClick="viewCustomerHome"
@@ -65,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:backgroundTint="@color/black"
             android:onClick="viewCustomerHome"
             android:text="MARK AS READY" />
