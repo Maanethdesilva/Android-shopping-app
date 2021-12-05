@@ -84,7 +84,8 @@ public class CartAdapter extends ArrayAdapter<Product> {
         tvName.setText(name);
         tvPrice.setText("$"+price);
         tvBrand.setText(brand);
-        tvCount.setText("Quantity: "+count);
+        tvCount.setText("Quantity Ordered: "+count);
+        tvStock.setText("Stock Left: "+ (stock - count));
 
 
 /*
