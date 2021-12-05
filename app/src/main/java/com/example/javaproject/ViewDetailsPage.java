@@ -33,7 +33,7 @@ public class ViewDetailsPage extends AppCompatActivity {
 
         orderID = getIntent().getIntExtra("Order ID", 0);
         total = getIntent().getDoubleExtra("Total", 0);
-        customerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        customerID = getIntent().getStringExtra("Customer ID");
         ArrayList<Product> cart = new ArrayList<>();
 
         //set total value

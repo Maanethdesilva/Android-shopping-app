@@ -8,16 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class OrdersAdapter extends ArrayAdapter<Order> {
+public class StoreOrdersAdapter extends ArrayAdapter<Order> {
 
     private Context mContext;
     int mResource;
@@ -29,7 +33,7 @@ public class OrdersAdapter extends ArrayAdapter<Order> {
      * @param objects
      */
 
-    public OrdersAdapter(@NonNull Context context, int resource, ArrayList<Order> objects) {
+    public StoreOrdersAdapter(@NonNull Context context, int resource, ArrayList<Order> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -41,6 +45,19 @@ public class OrdersAdapter extends ArrayAdapter<Order> {
         //get order information
         String storeName = getItem(position).getStoreName();
         String customerID = getItem(position).getCustomerID();
+        final String[] customerName = new String[1];
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(customerID);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                customerName[0] = snapshot.child("First Name").getValue().toString() + snapshot.child("Last Name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         int orderID = getItem(position).getOrderID();
         String status = getItem(position).getStatus();
         ArrayList<Product> cart = getItem(position).getCart();
@@ -61,11 +78,10 @@ public class OrdersAdapter extends ArrayAdapter<Order> {
         Button btnConfirmOrder = (Button) convertView.findViewById(R.id.orders_confirm_order);
 
         //display the information
-        tvStoreName.setText("Store Name: "+ storeName);
+        tvCustomerName.setText("Customer Name: "+ customerName[0]);
         tvOrderID.setText("Order ID: " + orderID);
         tvStatus.setText("Order Status: " + status);
-        tvCustomerName.setVisibility(View.GONE);
-        btnConfirmOrder.setVisibility(View.GONE);
+        tvStoreName.setVisibility(View.GONE);
 
         //button to go to details page
         btnViewDetails.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +92,14 @@ public class OrdersAdapter extends ArrayAdapter<Order> {
                 intent.putExtra("Order ID", orderID);
                 intent.putExtra("Total", total);
                 mContext.startActivity(intent);
+            }
+        });
+
+        //button to confirm order
+        btnConfirmOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Customer has been notified", Toast.LENGTH_LONG);
             }
         });
 
