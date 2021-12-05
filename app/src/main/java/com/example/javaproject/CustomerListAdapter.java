@@ -1,10 +1,12 @@
 package com.example.javaproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,18 @@ public class CustomerListAdapter extends ArrayAdapter<Store> {
 
         TextView tvStoreName = (TextView) convertView.findViewById(R.id.textView1);
         tvStoreName.setText(storeName);
+
+        Button tvOrderBtn = (Button) convertView.findViewById(R.id.orderBtn);
+
+        tvOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext, Add_order.class);
+                intent.putExtra("Storename", storeName);
+                mcontext.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
 }

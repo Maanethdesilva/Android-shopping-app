@@ -13,6 +13,9 @@
             android:name=".ViewDetailsPage"
             android:exported="false" />
         <activity
+            android:name=".Add_order"
+            android:exported="false" />
+        <activity
             android:name=".MyOrdersPage"
             android:exported="false" />
         <activity
@@ -20,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".EditInventoryProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Edit_Quantity"
             android:exported="false" />
         <activity
             android:name=".AddInventoryProductActivity"
