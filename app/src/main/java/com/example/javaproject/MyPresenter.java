@@ -21,8 +21,8 @@ public class MyPresenter implements Contract.Presenter {
         }else if (password.length() < 6){
             view.displayPasswordMessage("Password is too short");
         }else{
-            model = new MyModel(this);
-            model.loginChecker(email, password);
+//            model = new MyModel(this);
+            model.loginChecker(email, password,this);
         }
     }
 

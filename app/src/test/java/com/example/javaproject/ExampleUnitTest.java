@@ -79,13 +79,13 @@ public class ExampleUnitTest {
         verify(view, times(1)).storeOwnerPage();
     }
 
-//    @Test
-//    public void testPresenterModelCalled(){
-//        when(view.getEmail()).thenReturn ("timhortons@gmail.com");
-//        when(view.getPassword()).thenReturn("password");
-//        MyPresenter presenter = new MyPresenter(model, view);
-//        presenter.checkCredentials();
-//
-//        verify(model).loginChecker("timhortons@gmail.com", "password");
-//    }
+    @Test
+    public void testPresenterModelCalled(){
+        when(view.getEmail()).thenReturn ("arielle@gmail.com");
+        when(view.getPassword()).thenReturn("arielle");
+        MyPresenter presenter = new MyPresenter(model, view);
+        presenter.checkCredentials();
+
+        verify(model).loginChecker("arielle@gmail.com", "arielle", presenter);
+    }
 }
