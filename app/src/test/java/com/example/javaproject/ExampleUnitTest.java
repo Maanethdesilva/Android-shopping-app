@@ -2,20 +2,11 @@ package com.example.javaproject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.function.Predicate;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -87,4 +78,14 @@ public class ExampleUnitTest {
 
         verify(view, times(1)).storeOwnerPage();
     }
+
+//    @Test
+//    public void testPresenterModelCalled(){
+//        when(view.getEmail()).thenReturn ("timhortons@gmail.com");
+//        when(view.getPassword()).thenReturn("password");
+//        MyPresenter presenter = new MyPresenter(model, view);
+//        presenter.checkCredentials();
+//
+//        verify(model).loginChecker("timhortons@gmail.com", "password");
+//    }
 }
