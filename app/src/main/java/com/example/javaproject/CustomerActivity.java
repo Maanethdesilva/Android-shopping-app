@@ -35,7 +35,7 @@ public class CustomerActivity extends AppCompatActivity {
 
 
         ListView storeListView = (ListView) findViewById(R.id.custListView);
-        ArrayList<Store> allStores = new ArrayList<Store>();
+        ArrayList<Store> allStores = new ArrayList<>();
 
         CustomerListAdapter adapter = new CustomerListAdapter(this, R.layout.adapter_view_customer, allStores);
         storeListView.setAdapter(adapter);
@@ -46,8 +46,12 @@ public class CustomerActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 allStores.clear();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Store store = new Store(snapshot.child("Storename").getValue().toString());
-                    allStores.add(store);
+                    Object obj = snapshot.child("Storename").getValue();
+                    if(obj != null){
+                        Store store = new Store(obj.toString());
+                        allStores.add(store);
+                    }
+
 
                 }
                 adapter.notifyDataSetChanged();
