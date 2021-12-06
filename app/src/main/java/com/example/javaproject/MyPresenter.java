@@ -1,8 +1,8 @@
 package com.example.javaproject;
 
 public class MyPresenter implements Contract.Presenter {
-    private Contract.View view;
-    private Contract.Model model;
+    private final Contract.View view;
+    private final Contract.Model model;
 
     public MyPresenter(Contract.Model model, Contract.View view){
         this.model = model;
@@ -21,7 +21,6 @@ public class MyPresenter implements Contract.Presenter {
         }else if (password.length() < 6){
             view.displayPasswordMessage("Password is too short");
         }else{
-//            model = new MyModel(this);
             model.loginChecker(email, password,this);
         }
     }

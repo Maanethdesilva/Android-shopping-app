@@ -1,22 +1,18 @@
 package com.example.javaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.HashMap;
 
 public class Registration2 extends AppCompatActivity implements View.OnClickListener{
 
-    private Button register;
     private FirebaseAuth mAuth;
     private EditText eTStoreName, eTPhoneNumber, eTEmail, eTPassword;
 
@@ -25,13 +21,13 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_v2);
         mAuth = FirebaseAuth.getInstance();
-        register = (Button) findViewById(R.id.registerbutton);
+        Button register = findViewById(R.id.registerbutton);
         register.setOnClickListener(this);
 
-        eTStoreName = (EditText) findViewById(R.id.editTextStoreName);
-        eTPhoneNumber = (EditText) findViewById(R.id.editTextTextPhoneNumber2);
-        eTEmail = (EditText) findViewById(R.id.emailAddress);
-        eTPassword = (EditText) findViewById(R.id.editTextPasswordReg);
+        eTStoreName = findViewById(R.id.editTextStoreName);
+        eTPhoneNumber = findViewById(R.id.editTextTextPhoneNumber2);
+        eTEmail = findViewById(R.id.emailAddress);
+        eTPassword = findViewById(R.id.editTextPasswordReg);
     }
 
     @Override

@@ -30,8 +30,6 @@ public class Order {
 
     public String getStatus() {return status;}
 
-    public ArrayList<Product> getCart() {return cart;}
-
     public double getTotal() {return total;}
 
 }

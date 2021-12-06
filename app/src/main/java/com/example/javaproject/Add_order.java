@@ -6,22 +6,20 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Add_order extends AppCompatActivity {
 
+    private final double total = 0;
     private String customerID;
     private String storename;
 
@@ -30,12 +28,12 @@ public class Add_order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_details_page);
         storename = getIntent().getStringExtra("Storename");
-
         customerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ArrayList<Product> cart = new ArrayList<>();
 
         //set total value
-        ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $0.0");
+        String totalDisplay = ("TOTAL: $" + total);
+        ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay);
 
         //set list valuesViewDetailsPage
         ListView products_list = findViewById(R.id.view_details_products_list);
@@ -47,7 +45,6 @@ public class Add_order extends AppCompatActivity {
         tvUpdateTotal.setVisibility(View.VISIBLE);
 
         Button confirmOrder = findViewById(R.id.confirm_order);
-
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Stores");
         ref.child(storename).child("Inventory").addValueEventListener(new ValueEventListener() {
@@ -68,13 +65,16 @@ public class Add_order extends AppCompatActivity {
 
             }
         });
-        tvUpdateTotal.setText("Update Total");
+
+        String updateTotal = ("Update Total");
+        tvUpdateTotal.setText(updateTotal);
         tvUpdateTotal.setOnClickListener(v->{
             double total = 0;
             for(Product item: cart){
                 total += item.getCount()*item.getPrice();
             }
-            ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $" + total);
+            String dispTotal = ("TOTAL: $" + total);
+            ((TextView)findViewById(R.id.view_details_total)).setText(dispTotal);
             if(total == 0){
                 confirmOrder.setVisibility(View.GONE);
             } else{
@@ -87,7 +87,10 @@ public class Add_order extends AppCompatActivity {
             for(Product item: cart){
                 total += item.getCount()*item.getPrice();
             }
-            ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $" + total);
+
+            String totalDisplay2 = ("TOTAL: $" + total);
+            ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay2);
+
             if(total == 0){
                 confirmOrder.setVisibility(View.GONE);
                 Toast.makeText(this, "Your cart is empty", Toast.LENGTH_LONG).show();
@@ -103,15 +106,24 @@ public class Add_order extends AppCompatActivity {
                 map.put("Customer ID", customerID);
 
                 DatabaseReference cart_ref = store_order.child(key).child("Cart");
+
                 for(Product item: cart){
                     if(item.getCount() != 0) {
                         cart_ref.child(item.getInventory_name()).child("Name").setValue(item.getInventory_name());
                         cart_ref.child(item.getInventory_name()).child("Brand").setValue(item.getBrand());
                         cart_ref.child(item.getInventory_name()).child("Count").setValue(item.getCount());
                         cart_ref.child(item.getInventory_name()).child("Price").setValue(item.getPrice());
+
                     }
                 }
                 store_order.child(key).updateChildren(map);
+
+                map.clear();
+                map.put("Total", total);
+                map.put("Order ID", key);
+                map.put("Status", "Not Ready");
+                map.put("Storename", storename);
+                map.put("Customer ID", customerID);
 
                 DatabaseReference cust_ref1 = FirebaseDatabase.getInstance().getReference().child("Users")
                         .child(customerID).child("Orders").child(key);
@@ -126,23 +138,6 @@ public class Add_order extends AppCompatActivity {
                     }
                 }
                 cust_ref1.updateChildren(map);
-
-                //Add code to notify store owner
-                FirebaseDatabase.getInstance().getReference().child("Stores")
-                        .child(storename).child("OwnerId").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String owner_id = snapshot.getValue().toString();
-                        FirebaseDatabase.getInstance().getReference()
-                                .child("Users").child(owner_id).child("Notifications")
-                                .push().setValue("You have a new order!\nCheck Orders for details");
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
             }
         });
     }

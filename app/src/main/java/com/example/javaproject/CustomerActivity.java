@@ -6,27 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.security.cert.PolicyNode;
 import java.util.ArrayList;
 
-
 public class CustomerActivity extends AppCompatActivity {
-    private static final String TAG = "CustomerActivity";
-
-
-    //UI references
-
-    //private Button orderButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +22,7 @@ public class CustomerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer);
 
 
-        ListView storeListView = (ListView) findViewById(R.id.custListView);
+        ListView storeListView = findViewById(R.id.custListView);
         ArrayList<Store> allStores = new ArrayList<>();
 
         CustomerListAdapter adapter = new CustomerListAdapter(this, R.layout.adapter_view_customer, allStores);

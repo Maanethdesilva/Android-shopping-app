@@ -2,28 +2,20 @@ package com.example.javaproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class StoreOwnerActivity extends AppCompatActivity {
-    private ArrayList<Product> products;
-    private String storename = "Mcdonalds";
-
+    private String storename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +36,13 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void output(String storename){
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Stores").child(storename).child("Inventory");
         InventoryAdapter inventoryAdapter = new InventoryAdapter(this, R.layout.inventory_list_item, products);
-        ListView inventory_list = (ListView) findViewById(R.id.inventory_list);
+        ListView inventory_list = findViewById(R.id.inventory_list);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,31 +65,20 @@ public class StoreOwnerActivity extends AppCompatActivity {
 
     }
 
-
-
     public void addInvProduct(View v){
         Intent intent = new Intent(this,AddInventoryProductActivity.class);
         intent.putExtra("Storename", storename);
         startActivity(intent);
     }
 
-    public void editInvProduct(View v){
-        
-        Intent intent = new Intent(this,AddInventoryProductActivity.class);
-        intent.putExtra("Storename", storename);
-        startActivity(intent);
-    }
-
-    public void deleteInvProduct(View v){
-
-    }
-
     public void viewProfile(View v){
         startActivity(new Intent(this, ProfilePage.class));
     }
+
     public void viewNotification(View v){
         startActivity(new Intent(this, NotificationPage.class));
     }
+
     public void viewOrder(View v){
         startActivity(new Intent(this, MyOrdersPage.class));
     }

@@ -1,5 +1,7 @@
 package com.example.javaproject;
 
+import androidx.annotation.NonNull;
+
 public class Product {
     private String inventory_name;
     private int count;
@@ -38,10 +40,6 @@ public class Product {
         this.price = price;
     }
 
-    public void setInventory_name(String inventory_name) {
-        this.inventory_name = inventory_name;
-    }
-
     public int getCount() {
         return count;
     }
@@ -62,6 +60,7 @@ public class Product {
         return stock;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Product{" +

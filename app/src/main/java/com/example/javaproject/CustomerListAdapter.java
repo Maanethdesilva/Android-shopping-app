@@ -8,16 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
 public class CustomerListAdapter extends ArrayAdapter<Store> {
-    private static final String TAG = "CustomerListAdapter";
-    private Context mcontext;
-    private int mresource;
+    private final Context mcontext;
+    private final int mresource;
 
     /**
      * Default constructor for the PersonListAdapter
@@ -30,7 +26,6 @@ public class CustomerListAdapter extends ArrayAdapter<Store> {
         super(context, resource, objects);
         mcontext = context;
         mresource = resource;
-
     }
 
     @NonNull
@@ -39,25 +34,18 @@ public class CustomerListAdapter extends ArrayAdapter<Store> {
         // get store information
         String storeName = getItem(position).getStoreName();
 
-
-        // create a store object
-        Store store = new Store(storeName);
-
         LayoutInflater inflater = LayoutInflater.from(mcontext);
         convertView = inflater.inflate(mresource, parent, false);
 
-        TextView tvStoreName = (TextView) convertView.findViewById(R.id.textView1);
+        TextView tvStoreName = convertView.findViewById(R.id.textView1);
         tvStoreName.setText(storeName);
 
-        Button tvOrderBtn = (Button) convertView.findViewById(R.id.orderBtn);
+        Button tvOrderBtn = convertView.findViewById(R.id.orderBtn);
 
-        tvOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mcontext, Add_order.class);
-                intent.putExtra("Storename", storeName);
-                mcontext.startActivity(intent);
-            }
+        tvOrderBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(mcontext, Add_order.class);
+            intent.putExtra("Storename", storeName);
+            mcontext.startActivity(intent);
         });
 
         return convertView;

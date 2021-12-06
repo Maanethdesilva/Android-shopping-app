@@ -9,12 +9,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MyModel implements Contract.Model {
-//    private Contract.Presenter presenter;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-//
-//    public MyModel(Contract.Presenter presenter){
-//        this.presenter = presenter;
-//    }
+
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     public void loginChecker(String email, String password, MyPresenter presenter) {

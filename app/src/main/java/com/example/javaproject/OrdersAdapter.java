@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
 public class OrdersAdapter extends ArrayAdapter<Order> {
@@ -47,9 +45,12 @@ public class OrdersAdapter extends ArrayAdapter<Order> {
         Button btnConfirmOrder = convertView.findViewById(R.id.orders_confirm_order);
 
         //display the information
-        tvStoreName.setText("Store Name: "+ storeName);
-        tvOrderID.setText("Order ID: " + orderID);
-        tvStatus.setText("Order Status: " + status);
+        String storeNameDisplay = ("Store Name: "+ storeName);
+        String orderIDDisplay = ("Order ID: " + orderID);
+        String orderStatusDisplay = ("Order Status: " + status);
+        tvStoreName.setText(storeNameDisplay);
+        tvOrderID.setText(orderIDDisplay);
+        tvStatus.setText(orderStatusDisplay);
         tvCustomerName.setVisibility(View.GONE);
         btnConfirmOrder.setVisibility(View.GONE);
 

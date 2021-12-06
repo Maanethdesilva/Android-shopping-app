@@ -3,14 +3,11 @@ package com.example.javaproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,33 +17,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ProfilePage extends AppCompatActivity {
-    private static final String TAG = "ProfilePage";
-
-    private Button btnSignOut;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String mUid;
     public static final int BLACK = -16777216;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String mUid = user.getUid();
 
-
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        mUid = user.getUid();
-
-
-        final TextView greetingTextView = (TextView) findViewById(R.id.tvGreet);
-        final TextView firstNameTextView = (TextView) findViewById(R.id.tvFn);
-        final TextView lastNameTextView = (TextView) findViewById(R.id.tvLn);
-        final TextView emailTextView = (TextView) findViewById(R.id.tvEmailAddress);
-        final TextView phoneNumTextView = (TextView)findViewById(R.id.tvPhoneNum);
-        final TextView profileHeaderTextView = (TextView)findViewById(R.id.tvProfileHeader);
+        final TextView greetingTextView = findViewById(R.id.tvGreet);
+        final TextView firstNameTextView = findViewById(R.id.tvFn);
+        final TextView lastNameTextView = findViewById(R.id.tvLn);
+        final TextView emailTextView = findViewById(R.id.tvEmailAddress);
+        final TextView phoneNumTextView = findViewById(R.id.tvPhoneNum);
+        final TextView profileHeaderTextView = findViewById(R.id.tvProfileHeader);
 
         reference.child(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -96,7 +82,6 @@ public class ProfilePage extends AppCompatActivity {
 
                 }
 
-
                 // display email and phone number
                 Object email = snapshot.child(em).getValue();
                 Object phone = snapshot.child(ph).getValue();
@@ -108,8 +93,6 @@ public class ProfilePage extends AppCompatActivity {
                     phoneNumTextView.setText(text3);
                     emailTextView.setText(text4);
                 }
-
-
             }
 
             @Override
@@ -118,9 +101,7 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
-
-
-        btnSignOut = (Button) findViewById(R.id.custSignOut);
+        Button btnSignOut = findViewById(R.id.custSignOut);
 
         btnSignOut.setOnClickListener((View v) -> {
             FirebaseAuth.getInstance().signOut();

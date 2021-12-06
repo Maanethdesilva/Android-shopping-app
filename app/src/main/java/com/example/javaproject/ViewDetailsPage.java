@@ -2,19 +2,14 @@ package com.example.javaproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class ViewDetailsPage extends AppCompatActivity {
@@ -30,15 +25,14 @@ public class ViewDetailsPage extends AppCompatActivity {
         ArrayList<Product> cart = new ArrayList<>();
 
         //set total value
-        ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $" + total);
+        String totalDisplay = ("TOTAL: $" + total);
+        ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay);
 
         //set list valuesViewDetailsPage
         ListView products_list = findViewById(R.id.view_details_products_list);
 
-
         ViewDetailsAdapter cartAdapter = new ViewDetailsAdapter(this, R.layout.inventory_list_item, cart);
         products_list.setAdapter(cartAdapter);
-
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(customerID).child("Orders");
         ref.child(orderID).child("Cart").addValueEventListener(new ValueEventListener() {
