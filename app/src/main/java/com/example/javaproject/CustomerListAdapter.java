@@ -10,14 +10,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
 public class CustomerListAdapter extends ArrayAdapter<Store> {
     private static final String TAG = "CustomerListAdapter";
-    private Context mcontext;
-    private int mresource;
+    private final Context mcontext;
+    private final int mresource;
 
     /**
      * Default constructor for the PersonListAdapter
@@ -46,10 +45,10 @@ public class CustomerListAdapter extends ArrayAdapter<Store> {
         LayoutInflater inflater = LayoutInflater.from(mcontext);
         convertView = inflater.inflate(mresource, parent, false);
 
-        TextView tvStoreName = (TextView) convertView.findViewById(R.id.textView1);
+        TextView tvStoreName = convertView.findViewById(R.id.textView1);
         tvStoreName.setText(storeName);
 
-        Button tvOrderBtn = (Button) convertView.findViewById(R.id.orderBtn);
+        Button tvOrderBtn = convertView.findViewById(R.id.orderBtn);
 
         tvOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override

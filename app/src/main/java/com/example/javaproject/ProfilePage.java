@@ -41,12 +41,12 @@ public class ProfilePage extends AppCompatActivity {
         mUid = user.getUid();
 
 
-        final TextView greetingTextView = (TextView) findViewById(R.id.tvGreet);
-        final TextView firstNameTextView = (TextView) findViewById(R.id.tvFn);
-        final TextView lastNameTextView = (TextView) findViewById(R.id.tvLn);
-        final TextView emailTextView = (TextView) findViewById(R.id.tvEmailAddress);
-        final TextView phoneNumTextView = (TextView)findViewById(R.id.tvPhoneNum);
-        final TextView profileHeaderTextView = (TextView)findViewById(R.id.tvProfileHeader);
+        final TextView greetingTextView = findViewById(R.id.tvGreet);
+        final TextView firstNameTextView = findViewById(R.id.tvFn);
+        final TextView lastNameTextView = findViewById(R.id.tvLn);
+        final TextView emailTextView = findViewById(R.id.tvEmailAddress);
+        final TextView phoneNumTextView = findViewById(R.id.tvPhoneNum);
+        final TextView profileHeaderTextView = findViewById(R.id.tvProfileHeader);
 
         reference.child(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -120,7 +120,7 @@ public class ProfilePage extends AppCompatActivity {
 
 
 
-        btnSignOut = (Button) findViewById(R.id.custSignOut);
+        btnSignOut = findViewById(R.id.custSignOut);
 
         btnSignOut.setOnClickListener((View v) -> {
             FirebaseAuth.getInstance().signOut();

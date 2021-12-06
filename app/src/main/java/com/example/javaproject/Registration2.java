@@ -25,13 +25,13 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_v2);
         mAuth = FirebaseAuth.getInstance();
-        register = (Button) findViewById(R.id.registerbutton);
+        register = findViewById(R.id.registerbutton);
         register.setOnClickListener(this);
 
-        eTStoreName = (EditText) findViewById(R.id.editTextStoreName);
-        eTPhoneNumber = (EditText) findViewById(R.id.editTextTextPhoneNumber2);
-        eTEmail = (EditText) findViewById(R.id.emailAddress);
-        eTPassword = (EditText) findViewById(R.id.editTextPasswordReg);
+        eTStoreName = findViewById(R.id.editTextStoreName);
+        eTPhoneNumber = findViewById(R.id.editTextTextPhoneNumber2);
+        eTEmail = findViewById(R.id.emailAddress);
+        eTPassword = findViewById(R.id.editTextPasswordReg);
     }
 
     @Override
