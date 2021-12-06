@@ -64,7 +64,7 @@ public class MyOrdersPage extends AppCompatActivity {
                     double total = order.child("Total").getValue(double.class);
 
                     Order newOrder = new Order(storeName, userID, orderID, status,  new ArrayList<>(), total);
-                    ordersArr.add(newOrder);
+                    ordersArr.add(0, newOrder);
                 }
                 ordersAdapter.notifyDataSetChanged();
             }
@@ -96,7 +96,7 @@ public class MyOrdersPage extends AppCompatActivity {
                     ArrayList<Product> cart = new ArrayList<>();
                     double total = order.child("Total").getValue(double.class);
                     Order newOrder = new Order(storename, customerID, orderID, status, cart, total);
-                    ordersArr.add(newOrder);
+                    ordersArr.add(0, newOrder);
                 }
                 storeOrdersAdapter.notifyDataSetChanged();
             }

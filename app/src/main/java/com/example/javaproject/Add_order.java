@@ -1,8 +1,6 @@
 package com.example.javaproject;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,11 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Add_order extends AppCompatActivity {
 
-    private double total = 0;
     private String customerID;
     private String storename;
 
@@ -36,13 +32,13 @@ public class Add_order extends AppCompatActivity {
         storename = getIntent().getStringExtra("Storename");
 
         customerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        ArrayList<Product> cart = new ArrayList<Product>();
+        ArrayList<Product> cart = new ArrayList<>();
 
         //set total value
-        ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $" + total);
+        ((TextView)findViewById(R.id.view_details_total)).setText("TOTAL: $0.0");
 
         //set list valuesViewDetailsPage
-        ListView products_list = (ListView) findViewById(R.id.view_details_products_list);
+        ListView products_list = findViewById(R.id.view_details_products_list);
 
         CartAdapter cartAdapter = new CartAdapter(this, R.layout.inventory_list_item, cart);
         products_list.setAdapter(cartAdapter);
@@ -58,7 +54,6 @@ public class Add_order extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cart.clear();
-                double total = 0;
                 for(DataSnapshot item: snapshot.getChildren()) {
                     Product newP = new Product(item.child("Name").getValue().toString(),
                             0, item.child("Price").getValue(double.class),
@@ -71,7 +66,7 @@ public class Add_order extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            };
+            }
         });
         tvUpdateTotal.setText("Update Total");
         tvUpdateTotal.setOnClickListener(v->{
@@ -131,6 +126,23 @@ public class Add_order extends AppCompatActivity {
                     }
                 }
                 cust_ref1.updateChildren(map);
+
+                //Add code to notify store owner
+                FirebaseDatabase.getInstance().getReference().child("Stores")
+                        .child(storename).child("OwnerId").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String owner_id = snapshot.getValue().toString();
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("Users").child(owner_id).child("Notifications")
+                                .push().setValue("You have a new order!\nCheck Orders for details");
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
     }
