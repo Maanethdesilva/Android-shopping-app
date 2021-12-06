@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Contract.View {
 
-    private Contract.Presenter presenter;
     EditText eTEmail, eTPassword;
+    private Contract.Presenter presenter;
 
     @Override
     public String getEmail() {
@@ -60,10 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.singupbtn){
+        if (v.getId() == R.id.singupbtn) {
             startActivity(new Intent(this, signupOptions.class));
         }
-        if (v.getId() == R.id.loginbutton){
+        if (v.getId() == R.id.loginbutton) {
             presenter.checkCredentials();
         }
     }

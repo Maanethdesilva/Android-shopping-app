@@ -22,7 +22,6 @@
             android:id="@+id/add_product_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addInvProduct"
             android:text="Add a product" />
 
         <TextView
@@ -58,13 +57,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewProfile"
             android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_person"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
-            app:iconTint="#ffffff" />
+            app:iconPadding="0dp"
+            app:iconTint="#ffffff"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCart"
@@ -72,13 +71,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewOrder"
             android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/baseline_receipt_24"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
-            app:iconTint="#ffffff" />
+            app:iconPadding="0dp"
+            app:iconTint="#ffffff"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNotifications"
@@ -86,15 +85,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewNotification"
             android:textAllCaps="true"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_notifications"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
+            app:iconPadding="0dp"
             app:iconTint="#ffffff"
 
-            />
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 

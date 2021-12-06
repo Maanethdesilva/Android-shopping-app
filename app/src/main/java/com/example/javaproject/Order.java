@@ -24,12 +24,20 @@ public class Order {
         return storeName;
     }
 
-    public String getCustomerID() {return customerID;}
+    public String getCustomerID() {
+        return customerID;
+    }
 
-    public String getOrderID() { return orderID;}
+    public String getOrderID() {
+        return orderID;
+    }
 
-    public String getStatus() {return status;}
+    public String getStatus() {
+        return status;
+    }
 
-    public double getTotal() {return total;}
+    public double getTotal() {
+        return total;
+    }
 
 }

@@ -27,6 +27,7 @@
         android:ems="10"
         android:hint="Enter Product Name"
         android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_title" />
@@ -39,6 +40,7 @@
         android:ems="10"
         android:hint="Enter Product Brand"
         android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_title" />
@@ -51,6 +53,7 @@
         android:ems="10"
         android:hint="Enter Stock Quantity"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_product_name" />
@@ -95,7 +98,8 @@
             android:layout_weight="0.9"
             android:ems="10"
             android:hint="Enter Price"
-            android:inputType="numberDecimal|number" />
+            android:inputType="numberDecimal|number"
+            android:minHeight="48dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

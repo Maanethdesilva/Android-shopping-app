@@ -1,12 +1,13 @@
 package com.example.javaproject;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -23,8 +24,8 @@ public class ExampleUnitTest {
     MyModel model;
 
     @Test
-    public void testPresenterEmptyEmail(){
-        when(view.getEmail()).thenReturn ("");
+    public void testPresenterEmptyEmail() {
+        when(view.getEmail()).thenReturn("");
         when(view.getPassword()).thenReturn("");
 
         MyPresenter presenter = new MyPresenter(model, view);
@@ -34,8 +35,8 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterPasswordEmail(){
-        when(view.getEmail()).thenReturn ("");
+    public void testPresenterPasswordEmail() {
+        when(view.getEmail()).thenReturn("");
         when(view.getPassword()).thenReturn("");
 
         MyPresenter presenter = new MyPresenter(model, view);
@@ -45,8 +46,8 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterShortPassword(){
-        when(view.getEmail()).thenReturn ("person@gmail.com");
+    public void testPresenterShortPassword() {
+        when(view.getEmail()).thenReturn("person@gmail.com");
         when(view.getPassword()).thenReturn("123");
 
         MyPresenter presenter = new MyPresenter(model, view);
@@ -56,7 +57,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterInvalidEmail(){
+    public void testPresenterInvalidEmail() {
         MyPresenter presenter = new MyPresenter(model, view);
         presenter.unsuccessful();
 
@@ -64,7 +65,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterCustomerLogin(){
+    public void testPresenterCustomerLogin() {
         MyPresenter presenter = new MyPresenter(model, view);
         presenter.navigateCustomer();
 
@@ -72,7 +73,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterStoreOwnerLogin(){
+    public void testPresenterStoreOwnerLogin() {
         MyPresenter presenter = new MyPresenter(model, view);
         presenter.navigateStore();
 
@@ -80,8 +81,8 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testPresenterModelCalled(){
-        when(view.getEmail()).thenReturn ("arielle@gmail.com");
+    public void testPresenterModelCalled() {
+        when(view.getEmail()).thenReturn("arielle@gmail.com");
         when(view.getPassword()).thenReturn("arielle");
         MyPresenter presenter = new MyPresenter(model, view);
         presenter.checkCredentials();

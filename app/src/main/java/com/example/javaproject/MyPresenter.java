@@ -4,7 +4,7 @@ public class MyPresenter implements Contract.Presenter {
     private final Contract.View view;
     private final Contract.Model model;
 
-    public MyPresenter(Contract.Model model, Contract.View view){
+    public MyPresenter(Contract.Model model, Contract.View view) {
         this.model = model;
         this.view = view;
     }
@@ -13,20 +13,20 @@ public class MyPresenter implements Contract.Presenter {
     public void checkCredentials() {
         String email = view.getEmail();
         String password = view.getPassword();
-        if (email.equals("")){
+        if (email.equals("")) {
             view.displayEmailMessage("Field is empty");
         }
-        if (password.equals("")){
+        if (password.equals("")) {
             view.displayPasswordMessage("Field is empty");
-        }else if (password.length() < 6){
+        } else if (password.length() < 6) {
             view.displayPasswordMessage("Password is too short");
-        }else{
-            model.loginChecker(email, password,this);
+        } else {
+            model.loginChecker(email, password, this);
         }
     }
 
     @Override
-    public void unsuccessful(){
+    public void unsuccessful() {
         view.displayEmailMessage("unsuccessful login");
     }
 
@@ -36,7 +36,7 @@ public class MyPresenter implements Contract.Presenter {
     }
 
     @Override
-    public void navigateCustomer(){
+    public void navigateCustomer() {
         view.customerPage();
     }
 

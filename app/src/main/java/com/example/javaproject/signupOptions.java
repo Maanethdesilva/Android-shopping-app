@@ -1,10 +1,11 @@
 package com.example.javaproject;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class signupOptions extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,10 +21,10 @@ public class signupOptions extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.storeownerbtn){
+        if (v.getId() == R.id.storeownerbtn) {
             startActivity(new Intent(this, Registration2.class));
         }
-        if (v.getId() == R.id.customerbtn){
+        if (v.getId() == R.id.customerbtn) {
             startActivity(new Intent(this, Registration.class));
         }
     }

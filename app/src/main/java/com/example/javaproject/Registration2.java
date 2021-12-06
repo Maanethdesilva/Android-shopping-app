@@ -1,17 +1,20 @@
 package com.example.javaproject;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 
-public class Registration2 extends AppCompatActivity implements View.OnClickListener{
+public class Registration2 extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private EditText eTStoreName, eTPhoneNumber, eTEmail, eTPassword;
@@ -32,7 +35,7 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.registerbutton){
+        if (v.getId() == R.id.registerbutton) {
             registerStore(eTStoreName, eTPhoneNumber, eTEmail, eTPassword);
         }
     }
@@ -43,21 +46,21 @@ public class Registration2 extends AppCompatActivity implements View.OnClickList
         String email = eTEmail.getText().toString();
         String password = eTPassword.getText().toString();
 
-        if (storeName.isEmpty()){
+        if (storeName.isEmpty()) {
             eTStoreName.setError("Field is empty");
             eTStoreName.requestFocus();
             return;
         }
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             eTEmail.setError("Field is empty");
             eTEmail.requestFocus();
             return;
         }
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             eTPassword.setError("Field is empty");
             eTPassword.requestFocus();
             return;
-        }else if (password.length() < 6){
+        } else if (password.length() < 6) {
             eTPassword.setError("Password is too short");
             eTPassword.requestFocus();
             return;

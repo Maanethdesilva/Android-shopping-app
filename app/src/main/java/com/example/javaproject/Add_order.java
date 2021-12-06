@@ -6,14 +6,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,7 +36,7 @@ public class Add_order extends AppCompatActivity {
 
         //set total value
         String totalDisplay = ("TOTAL: $" + total);
-        ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay);
+        ((TextView) findViewById(R.id.view_details_total)).setText(totalDisplay);
 
         //set list valuesViewDetailsPage
         ListView products_list = findViewById(R.id.view_details_products_list);
@@ -51,7 +54,7 @@ public class Add_order extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cart.clear();
-                for(DataSnapshot item: snapshot.getChildren()) {
+                for (DataSnapshot item : snapshot.getChildren()) {
                     Product newP = new Product(item.child("Name").getValue().toString(),
                             0, item.child("Price").getValue(double.class),
                             item.child("Brand").getValue().toString(),
@@ -60,6 +63,7 @@ public class Add_order extends AppCompatActivity {
                 }
                 cartAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -68,33 +72,33 @@ public class Add_order extends AppCompatActivity {
 
         String updateTotal = ("Update Total");
         tvUpdateTotal.setText(updateTotal);
-        tvUpdateTotal.setOnClickListener(v->{
+        tvUpdateTotal.setOnClickListener(v -> {
             double total = 0;
-            for(Product item: cart){
-                total += item.getCount()*item.getPrice();
+            for (Product item : cart) {
+                total += item.getCount() * item.getPrice();
             }
             String dispTotal = ("TOTAL: $" + total);
-            ((TextView)findViewById(R.id.view_details_total)).setText(dispTotal);
-            if(total == 0){
+            ((TextView) findViewById(R.id.view_details_total)).setText(dispTotal);
+            if (total == 0) {
                 confirmOrder.setVisibility(View.GONE);
-            } else{
+            } else {
                 confirmOrder.setVisibility(View.VISIBLE);
             }
         });
 
-        confirmOrder.setOnClickListener(v->{
+        confirmOrder.setOnClickListener(v -> {
             double total = 0;
-            for(Product item: cart){
-                total += item.getCount()*item.getPrice();
+            for (Product item : cart) {
+                total += item.getCount() * item.getPrice();
             }
 
             String totalDisplay2 = ("TOTAL: $" + total);
-            ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay2);
+            ((TextView) findViewById(R.id.view_details_total)).setText(totalDisplay2);
 
-            if(total == 0){
+            if (total == 0) {
                 confirmOrder.setVisibility(View.GONE);
                 Toast.makeText(this, "Your cart is empty", Toast.LENGTH_LONG).show();
-            } else{
+            } else {
                 DatabaseReference store_order = ref.child(storename).child("Orders");
                 String key = store_order.push().getKey();
 
@@ -107,8 +111,8 @@ public class Add_order extends AppCompatActivity {
 
                 DatabaseReference cart_ref = store_order.child(key).child("Cart");
 
-                for(Product item: cart){
-                    if(item.getCount() != 0) {
+                for (Product item : cart) {
+                    if (item.getCount() != 0) {
                         cart_ref.child(item.getInventory_name()).child("Name").setValue(item.getInventory_name());
                         cart_ref.child(item.getInventory_name()).child("Brand").setValue(item.getBrand());
                         cart_ref.child(item.getInventory_name()).child("Count").setValue(item.getCount());
@@ -129,8 +133,8 @@ public class Add_order extends AppCompatActivity {
                         .child(customerID).child("Orders").child(key);
                 DatabaseReference cust_ref = cust_ref1.child("Cart");
 
-                for(Product item: cart){
-                    if(item.getCount() != 0) {
+                for (Product item : cart) {
+                    if (item.getCount() != 0) {
                         cust_ref.child(item.getInventory_name()).child("Name").setValue(item.getInventory_name());
                         cust_ref.child(item.getInventory_name()).child("Brand").setValue(item.getBrand());
                         cust_ref.child(item.getInventory_name()).child("Count").setValue(item.getCount());

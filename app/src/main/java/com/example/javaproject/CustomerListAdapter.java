@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class CustomerListAdapter extends ArrayAdapter<Store> {
@@ -17,6 +19,7 @@ public class CustomerListAdapter extends ArrayAdapter<Store> {
 
     /**
      * Default constructor for the PersonListAdapter
+     *
      * @param context
      * @param resource
      * @param objects

@@ -17,15 +17,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:text="STORES"
+            android:text="@string/stores"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="26sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/customer_home_list"
@@ -58,13 +59,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewProfile"
 
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_person"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
-            app:iconTint="#ffffff" />
+            app:iconPadding="0dp"
+            app:iconTint="#ffffff"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCart"
@@ -72,12 +73,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewOrder"
             app:backgroundTint="#000000"
             app:icon="@drawable/baseline_receipt_24"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
-            app:iconTint="#ffffff" />
+            app:iconPadding="0dp"
+            app:iconTint="#ffffff"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNotifications"
@@ -85,14 +86,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="viewNotification"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_stat_notifications"
             app:iconGravity="textStart"
-            app:iconPadding="10dp"
+            app:iconPadding="0dp"
             app:iconTint="#ffffff"
 
-            />
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
@@ -113,9 +113,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#000000"
-            android:textColor="#FFFFFF"
-            android:text="CUSTOMER HOME"
+            android:text="@string/customer_home"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="26sp" />
     </LinearLayout>
 

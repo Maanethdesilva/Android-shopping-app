@@ -1,17 +1,21 @@
 package com.example.javaproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class CustomerActivity extends AppCompatActivity {
@@ -20,6 +24,14 @@ public class CustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+
+        Button profileButton = findViewById(R.id.btnProfile);
+        Button orderButton = findViewById(R.id.btnCart);
+        Button notifyButton = findViewById(R.id.btnNotifications);
+
+        profileButton.setOnClickListener(this::viewProfile);
+        orderButton.setOnClickListener(this::viewOrder);
+        notifyButton.setOnClickListener(this::viewNotification);
 
 
         ListView storeListView = findViewById(R.id.custListView);
@@ -33,9 +45,9 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 allStores.clear();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Object obj = snapshot.child("Storename").getValue();
-                    if(obj != null){
+                    if (obj != null) {
                         Store store = new Store(obj.toString());
                         allStores.add(store);
                     }
@@ -54,13 +66,16 @@ public class CustomerActivity extends AppCompatActivity {
 
 
     }
-    public void viewProfile(View v){
+
+    public void viewProfile(View v) {
         startActivity(new Intent(CustomerActivity.this, ProfilePage.class));
     }
-    public void viewNotification(View v){
+
+    public void viewNotification(View v) {
         startActivity(new Intent(CustomerActivity.this, NotificationPage.class));
     }
-    public void viewOrder(View v){
+
+    public void viewOrder(View v) {
         startActivity(new Intent(CustomerActivity.this, MyOrdersPage.class));
     }
 

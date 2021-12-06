@@ -1,6 +1,7 @@
 package com.example.javaproject;
 
 import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,16 +16,16 @@ public class MyModel implements Contract.Model {
     @Override
     public void loginChecker(String email, String password, MyPresenter presenter) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+            if (task.isSuccessful()) {
                 String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference().child("Users");
                 user_ref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         boolean isStoreOwner = snapshot.child(userID).child("isStoreOwner").getValue(boolean.class);
-                        if (isStoreOwner){
+                        if (isStoreOwner) {
                             presenter.navigateStore();
-                        }else {
+                        } else {
                             presenter.navigateCustomer();
                         }
                     }
@@ -33,7 +34,7 @@ public class MyModel implements Contract.Model {
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
-            }else {
+            } else {
                 presenter.unsuccessful();
             }
         });

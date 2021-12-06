@@ -9,7 +9,7 @@ public class Product {
     private String brand;
     private int stock;  //To be used for placing orders
 
-    public Product(){
+    public Product() {
 
     }
 

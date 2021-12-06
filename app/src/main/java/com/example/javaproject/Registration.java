@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 
 public class Registration extends AppCompatActivity implements View.OnClickListener {
@@ -32,39 +35,39 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.registerbutton){
+        if (v.getId() == R.id.registerbutton) {
             register(eTFirstName, eTLastName, eTPhoneNumber, eTEmail, eTPassword);
         }
     }
 
-    public void register(EditText eTFirstName, EditText eTLastName, EditText eTPhoneNumber, EditText eTemail, EditText eTpassword){
+    public void register(EditText eTFirstName, EditText eTLastName, EditText eTPhoneNumber, EditText eTemail, EditText eTpassword) {
         String firstName = eTFirstName.getText().toString().trim();
         String lastName = eTLastName.getText().toString().trim();
         String phoneNumber = eTPhoneNumber.getText().toString().trim();
         String email = eTemail.getText().toString();
         String password = eTpassword.getText().toString();
 
-        if (firstName.isEmpty()){
+        if (firstName.isEmpty()) {
             eTFirstName.setError("Field is empty");
             eTFirstName.requestFocus();
             return;
         }
-        if (lastName.isEmpty()){
+        if (lastName.isEmpty()) {
             eTLastName.setError("Field is empty");
             eTLastName.requestFocus();
             return;
         }
 
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             eTemail.setError("Field is empty");
             eTemail.requestFocus();
             return;
         }
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             eTpassword.setError("Field is empty");
             eTpassword.requestFocus();
             return;
-        }else if (password.length() < 6){
+        } else if (password.length() < 6) {
             eTpassword.setError("Password is too short");
             eTpassword.requestFocus();
             return;

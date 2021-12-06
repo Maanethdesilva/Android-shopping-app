@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +28,7 @@ public class EditInventoryProductActivity extends AppCompatActivity {
 
         storename = getIntent().getStringExtra("Storename");
         String title = getIntent().getStringExtra("Name");
-        TextView tvTitle = findViewById(R.id.add_product_title) ;
+        TextView tvTitle = findViewById(R.id.add_product_title);
         String editProduct = ("Edit Product");
         tvTitle.setText(editProduct);
 
@@ -34,18 +36,18 @@ public class EditInventoryProductActivity extends AppCompatActivity {
         String updateDisplay = ("UPDATE " + title);
         btn.setText(updateDisplay);
 
-        String countDisplay = (""+getIntent().getIntExtra("Count",0));
-        String priceDisplay = (""+getIntent().getDoubleExtra("Price",0));
-        ((EditText)findViewById(R.id.add_product_name)).setText(getIntent().getStringExtra("Name"));
-        ((EditText)findViewById(R.id.add_product_brand)).setText(getIntent().getStringExtra("Brand"));
-        ((EditText)findViewById(R.id.add_product_count)).setText(countDisplay);
-        ((EditText)findViewById(R.id.add_product_price)).setText(priceDisplay);
+        String countDisplay = ("" + getIntent().getIntExtra("Count", 0));
+        String priceDisplay = ("" + getIntent().getDoubleExtra("Price", 0));
+        ((EditText) findViewById(R.id.add_product_name)).setText(getIntent().getStringExtra("Name"));
+        ((EditText) findViewById(R.id.add_product_brand)).setText(getIntent().getStringExtra("Brand"));
+        ((EditText) findViewById(R.id.add_product_count)).setText(countDisplay);
+        ((EditText) findViewById(R.id.add_product_price)).setText(priceDisplay);
 
-        btn.setOnClickListener(v->{
-            String name = ((EditText)findViewById(R.id.add_product_name)).getText().toString();
-            String brand = ((EditText)findViewById(R.id.add_product_brand)).getText().toString();
-            int count = Integer.parseInt(((EditText)findViewById(R.id.add_product_count)).getText().toString());
-            double price = Double.parseDouble(((EditText)findViewById(R.id.add_product_price)).getText().toString());
+        btn.setOnClickListener(v -> {
+            String name = ((EditText) findViewById(R.id.add_product_name)).getText().toString();
+            String brand = ((EditText) findViewById(R.id.add_product_brand)).getText().toString();
+            int count = Integer.parseInt(((EditText) findViewById(R.id.add_product_count)).getText().toString());
+            double price = Double.parseDouble(((EditText) findViewById(R.id.add_product_price)).getText().toString());
 
             HashMap<String, Object> map = new HashMap<>();
             map.put("Name", name);

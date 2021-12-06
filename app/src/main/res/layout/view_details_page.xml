@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyOrdersPage"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MyOrdersPage">
 
     <TextView
         android:id="@+id/view_details_page_title"
@@ -17,11 +17,11 @@
         android:textSize="26sp" />
 
     <ListView
-        android:layout_weight="0.8"
         android:id="@+id/view_details_products_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/inventory_list_item" >
+        android:layout_weight="0.8"
+        tools:listitem="@layout/inventory_list_item">
 
     </ListView>
 
@@ -29,10 +29,10 @@
         android:id="@+id/view_details_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
         android:background="@color/black"
+        android:text="TOTAL:"
         android:textColor="@color/white"
-        android:text="TOTAL:" />
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/update_total"

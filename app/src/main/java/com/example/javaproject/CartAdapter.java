@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 
 public class CartAdapter extends ArrayAdapter<Product> {
@@ -42,8 +44,8 @@ public class CartAdapter extends ArrayAdapter<Product> {
         TextView tvBrand = convertView.findViewById(R.id.inv_brand);
         TextView tvStock = convertView.findViewById(R.id.inv_stock_available);
         tvStock.setVisibility(View.VISIBLE);
-        ( convertView.findViewById(R.id.edit_inv_btn)).setVisibility(View.GONE);
-        ( convertView.findViewById(R.id.imageView)).setVisibility(View.GONE);
+        (convertView.findViewById(R.id.edit_inv_btn)).setVisibility(View.GONE);
+        (convertView.findViewById(R.id.imageView)).setVisibility(View.GONE);
 
         NumberPicker tvQuantity = convertView.findViewById(R.id.editTextNumber);
         tvQuantity.setVisibility(View.VISIBLE);
@@ -52,15 +54,15 @@ public class CartAdapter extends ArrayAdapter<Product> {
         tvQuantity.setValue(getItem(position).getCount());
 
         tvQuantity.setOnScrollListener((view, scrollState) -> {
-            if(scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE){
+            if (scrollState == NumberPicker.OnScrollListener.SCROLL_STATE_IDLE) {
                 getItem(position).setCount(tvQuantity.getValue());
                 notifyDataSetChanged();
             }
         });
 
-        String priceDisplay = ("$"+price);
-        String quantityDisplay = ("Quantity Ordered: "+count);
-        String stockDisplay = ("Stock Left: "+ (stock - count));
+        String priceDisplay = ("$" + price);
+        String quantityDisplay = ("Quantity Ordered: " + count);
+        String stockDisplay = ("Stock Left: " + (stock - count));
         tvName.setText(name);
         tvPrice.setText(priceDisplay);
         tvBrand.setText(brand);

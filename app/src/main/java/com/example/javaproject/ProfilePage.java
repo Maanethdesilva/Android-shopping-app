@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -51,9 +53,9 @@ public class ProfilePage extends AppCompatActivity {
 
                 Boolean isStore = snapshot.child(storeOwner).getValue(boolean.class);
                 if (isStore != null) {
-                    if(isStore) {
+                    if (isStore) {
                         Object object = snapshot.child(sn).getValue();
-                        if(object != null){
+                        if (object != null) {
                             String mSn = object.toString();
                             greeting = "You are signed in as a store owner of " + mSn + ".";
                             greetingTextView.setText(greeting);
@@ -67,11 +69,11 @@ public class ProfilePage extends AppCompatActivity {
                     } else {
                         Object firstObject = snapshot.child(fn).getValue();
                         Object lastObject = snapshot.child(ln).getValue();
-                        if(firstObject != null && lastObject != null){
+                        if (firstObject != null && lastObject != null) {
                             String mFn = firstObject.toString();
                             String mLn = lastObject.toString();
                             profileHeaderTextView.setBackgroundColor(BLACK);
-                            greeting = "Welcome, " +mFn + ".";
+                            greeting = "Welcome, " + mFn + ".";
                             text1 = fn + ": " + mFn;
                             text2 = ln + ": " + mLn;
                             greetingTextView.setText(greeting);
@@ -85,7 +87,7 @@ public class ProfilePage extends AppCompatActivity {
                 // display email and phone number
                 Object email = snapshot.child(em).getValue();
                 Object phone = snapshot.child(ph).getValue();
-                if(email != null && phone != null){
+                if (email != null && phone != null) {
                     String mEm = email.toString();
                     String mPh = phone.toString();
                     text3 = ph + ": " + mPh;
@@ -106,10 +108,10 @@ public class ProfilePage extends AppCompatActivity {
         btnSignOut.setOnClickListener((View v) -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(ProfilePage.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-            Toast.makeText(ProfilePage.this,"Signed Out.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ProfilePage.this, "Signed Out.", Toast.LENGTH_LONG).show();
         });
 
 

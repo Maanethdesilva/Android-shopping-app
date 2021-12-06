@@ -1,15 +1,18 @@
 package com.example.javaproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class ViewDetailsPage extends AppCompatActivity {
@@ -26,7 +29,7 @@ public class ViewDetailsPage extends AppCompatActivity {
 
         //set total value
         String totalDisplay = ("TOTAL: $" + total);
-        ((TextView)findViewById(R.id.view_details_total)).setText(totalDisplay);
+        ((TextView) findViewById(R.id.view_details_total)).setText(totalDisplay);
 
         //set list valuesViewDetailsPage
         ListView products_list = findViewById(R.id.view_details_products_list);
@@ -39,7 +42,7 @@ public class ViewDetailsPage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cart.clear();
-                for(DataSnapshot item: snapshot.getChildren()) {
+                for (DataSnapshot item : snapshot.getChildren()) {
                     Product newP = new Product(item.child("Name").getValue().toString(),
                             item.child("Count").getValue(int.class), item.child("Price").getValue(double.class),
                             item.child("Brand").getValue().toString());
@@ -47,6 +50,7 @@ public class ViewDetailsPage extends AppCompatActivity {
                 }
                 cartAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }

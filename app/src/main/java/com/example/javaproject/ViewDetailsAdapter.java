@@ -8,8 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 
 public class ViewDetailsAdapter extends ArrayAdapter<Product> {
@@ -41,8 +43,8 @@ public class ViewDetailsAdapter extends ArrayAdapter<Product> {
         Button tvButton = convertView.findViewById(R.id.edit_inv_btn);
         ImageView tvDelete = convertView.findViewById(R.id.imageView);
 
-        String quantityDisplay = ("Quantity: "+count);
-        String priceDisplay = ("$"+price);
+        String quantityDisplay = ("Quantity: " + count);
+        String priceDisplay = ("$" + price);
         tvName.setText(name);
         tvCount.setText(quantityDisplay);
         tvPrice.setText(priceDisplay);

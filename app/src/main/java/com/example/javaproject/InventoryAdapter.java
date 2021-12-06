@@ -9,14 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class InventoryAdapter extends ArrayAdapter<Product> {
@@ -24,7 +27,6 @@ public class InventoryAdapter extends ArrayAdapter<Product> {
     int mResource;
 
     /**
-     *
      * @param context
      * @param resource
      * @param objects
@@ -53,8 +55,8 @@ public class InventoryAdapter extends ArrayAdapter<Product> {
         Button tvButton = convertView.findViewById(R.id.edit_inv_btn);
         ImageView tvDelete = convertView.findViewById(R.id.imageView);
 
-        String stockAvailable = ("Stock available: "+count);
-        String priceDisplay = ("$"+price);
+        String stockAvailable = ("Stock available: " + count);
+        String priceDisplay = ("$" + price);
         tvName.setText(name);
         tvCount.setText(stockAvailable);
         tvPrice.setText(priceDisplay);

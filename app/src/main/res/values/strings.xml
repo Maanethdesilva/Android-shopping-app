@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">JavaProject</string>
     <string name="add_notification">Add notification</string>
+    <string name="customer_home">CUSTOMER HOME</string>
+    <string name="stores">STORES</string>
+    <string name="login">LOGIN</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="no_account_yet">No account yet?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="register">REGISTER</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
 </resources>

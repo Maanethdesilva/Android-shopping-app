@@ -1,15 +1,18 @@
 package com.example.javaproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MyOrdersPage extends AppCompatActivity {
@@ -26,9 +29,9 @@ public class MyOrdersPage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 boolean isStoreOwner = snapshot.child("isStoreOwner").getValue(boolean.class);
-                if(isStoreOwner){
-                     output(snapshot.child("Store Name").getValue().toString());
-                } else{
+                if (isStoreOwner) {
+                    output(snapshot.child("Store Name").getValue().toString());
+                } else {
                     output();
                 }
             }
@@ -39,7 +42,8 @@ public class MyOrdersPage extends AppCompatActivity {
             }
         });
     }
-    protected  void output(){
+
+    protected void output() {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ListView ordersList = findViewById(R.id.orders_list);
         ArrayList<Order> ordersArr = new ArrayList<>();
@@ -59,17 +63,19 @@ public class MyOrdersPage extends AppCompatActivity {
                     //this only needs to be filled when the user presses view details
                     double total = order.child("Total").getValue(double.class);
 
-                    Order newOrder = new Order(storeName, userID, orderID, status,  new ArrayList<>(), total);
+                    Order newOrder = new Order(storeName, userID, orderID, status, new ArrayList<>(), total);
                     ordersArr.add(0, newOrder);
                 }
                 ordersAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
-    protected void output(String storename){
+
+    protected void output(String storename) {
         //set adapter for customers to OrdersAdapter
         ListView ordersList = findViewById(R.id.orders_list);
         ArrayList<Order> ordersArr = new ArrayList<>();

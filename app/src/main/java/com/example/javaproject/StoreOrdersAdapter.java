@@ -9,13 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class StoreOrdersAdapter extends ArrayAdapter<Order> {
@@ -56,7 +59,7 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String customerName = snapshot.child("First Name").getValue().toString() + " " + snapshot.child("Last Name").getValue().toString();
-                String completeCustomerName = ("Customer Name: "+customerName);
+                String completeCustomerName = ("Customer Name: " + customerName);
                 tvCustomerName.setText(completeCustomerName);
             }
 
@@ -65,7 +68,7 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
             }
         });
 
-        if(status.equals("Ready")){
+        if (status.equals("Ready")) {
             btnConfirmOrder.setVisibility(View.GONE);
         }
 

@@ -22,12 +22,14 @@
             <TextView
                 android:id="@+id/inv_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="bottom|left"
+                android:layout_height="40dp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center_vertical|left"
                 android:paddingLeft="20dp"
                 android:text="Inventory name"
                 android:textColor="#000000"
-                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,11 +37,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/inv_name"
+                android:autoSizeMaxTextSize="18sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Count"
                 android:textColor="#4CAF50"
-                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -47,11 +51,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/inv_name"
+                android:autoSizeMaxTextSize="18sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Count"
                 android:textColor="#4CAF50"
-                android:textSize="16sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
@@ -60,11 +66,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/inv_count"
+                android:autoSizeMaxTextSize="18sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Price"
                 android:textColor="#000000"
-                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -72,11 +80,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/inv_count"
+                android:autoSizeMaxTextSize="18sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Brand"
                 android:textColor="#000000"
-                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -85,7 +95,7 @@
             android:id="@+id/edit_inv_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_gravity="center"
             android:backgroundTint="#000000"
             android:text="edit"
             android:visibility="visible"
@@ -95,7 +105,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
+            android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:layout_weight="0.8"
             android:visibility="visible"
