@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class signupOptions extends AppCompatActivity implements View.OnClickListener {
@@ -17,10 +16,10 @@ public class signupOptions extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        signupCustomer = (Button) findViewById(R.id.customerbtn);
+        signupCustomer = findViewById(R.id.customerbtn);
         signupCustomer.setOnClickListener(this);
 
-        signupStoreOwner = (Button) findViewById(R.id.storeownerbtn);
+        signupStoreOwner = findViewById(R.id.storeownerbtn);
         signupStoreOwner.setOnClickListener(this);
     }
 

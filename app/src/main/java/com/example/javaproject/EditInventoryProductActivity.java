@@ -2,7 +2,6 @@ package com.example.javaproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,10 +29,10 @@ public class EditInventoryProductActivity extends AppCompatActivity {
 
         title = getIntent().getStringExtra("Name");
 
-        TextView tvTitle = (TextView)findViewById(R.id.add_product_title) ;
+        TextView tvTitle = findViewById(R.id.add_product_title);
         tvTitle.setText("Edit Product");
 
-        Button btn = (Button)findViewById(R.id.add_product_submit_btn);
+        Button btn = findViewById(R.id.add_product_submit_btn);
         btn.setText("UPDATE " + title);
 
         ((EditText)findViewById(R.id.add_product_name)).setText(getIntent().getStringExtra("Name"));

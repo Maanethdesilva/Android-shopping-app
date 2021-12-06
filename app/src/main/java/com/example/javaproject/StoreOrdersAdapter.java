@@ -90,7 +90,7 @@ public class StoreOrdersAdapter extends ArrayAdapter<Order> {
 
         //button to confirm order
         btnConfirmOrder.setOnClickListener(v -> {
-            Toast.makeText(mContext, "Customer has been notified", Toast.LENGTH_LONG);
+            Toast.makeText(mContext, "Customer has been notified", Toast.LENGTH_LONG).show();
             btnConfirmOrder.setVisibility(View.GONE);
 
             ref.child("Notifications").push().setValue("Your order is now ready!\nFrom: " + getItem(position).storeName);
